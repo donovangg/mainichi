@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import AnimeList from "~/components/AnimeList";
 
 interface animeProps {
   anime: {
@@ -36,6 +37,7 @@ const Home: NextPage<animeProps> = ({ anime }) => {
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center">
         <h1>Uwuuuuu</h1>
+        <AnimeList anime={anime}/>
       </main>
     </>
   );
