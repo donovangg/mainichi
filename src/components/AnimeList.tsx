@@ -1,4 +1,5 @@
 import React from 'react'
+import AnimeCard from './AnimeCard'
 
 type AnimeProps = {
     anime: {
@@ -28,7 +29,7 @@ const AnimeList: React.FC<AnimeProps> = ({anime}) => {
     <div>
         <ul>
             {anime.map((ani) => (
-                <li>{ani.title}</li>
+                <AnimeCard ani={ani} />
             ))}
         </ul>
     </div>
