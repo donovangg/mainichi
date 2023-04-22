@@ -25,9 +25,12 @@ type AnimeCardProps = {
 
 const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
   return (
-    <li className="border-2 border-red-500">
+    <li className="border-2 w-48 border-red-500">
       <div>
-        <h2>{ani.title}</h2>
+        <div>
+            <img className="object-cover" src={ani.images.webp.image_url} alt={ani.title} />
+        </div>
+        <h2 className="truncate">{ani.title}</h2>
       </div>
     </li>
   );

@@ -1,39 +1,41 @@
-import React from 'react'
-import AnimeCard from './AnimeCard'
+import React from "react";
+import AnimeCard from "./AnimeCard";
 
 type AnimeProps = {
-    anime: {
-        mal_id: number;
+  anime: {
+    mal_id: number;
+    url: string;
+    title: string;
+    images: {
+      jpg: string;
+      webp: {
+        image_url: string;
+      };
+    };
+    genres: [
+      {
+        name: string;
         url: string;
-        title: string;
-        images: {
-          jpg: string;
-          webp: {
-            image_url: string,
-          }
-        };
-        genres: [
-          {
-            name: string,
-            url: string
-          }
-        ]
-        broadcast: {
-          day: string
-        }
-      }[];
-}
+      }
+    ];
+    broadcast: {
+      day: string;
+    };
+  }[];
+};
 
-const AnimeList: React.FC<AnimeProps> = ({anime}) => {
+const AnimeList: React.FC<AnimeProps> = ({ anime }) => {
   return (
-    <div>
-        <ul>
-            {anime.map((ani) => (
-                <AnimeCard ani={ani} />
-            ))}
+    <section className="border-2 border-blue-700 w-full">
+      <div className="w-11/12 mx-auto">
+        <ul className="flex flex-wrap gap-4">
+          {anime.map((ani) => (
+            <AnimeCard ani={ani} />
+          ))}
         </ul>
-    </div>
-  )
-}
+      </div>
+    </section>
+  );
+};
 
-export default AnimeList
+export default AnimeList;
