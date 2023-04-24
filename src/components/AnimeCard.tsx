@@ -1,4 +1,5 @@
 import React from "react";
+import CardDropdown from "./CardDropdown";
 
 type AnimeCardProps = {
   ani: {
@@ -27,12 +28,15 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
   return (
     <li className="w-48 border-2 border-red-500">
       <div className="flex flex-col">
-        <div className="flex-1">
+        <div>
           <img
-            className="object-cover"
+            className="object-cover h-64 w-full"
             src={ani.images.webp.image_url}
             alt={ani.title}
           />
+        </div>
+        <div>
+          <button className="border-2 border-red-500 w-full">Bookmark</button>
         </div>
         <div className="p-2">
           <h2 className="truncate">{ani.title}</h2>
