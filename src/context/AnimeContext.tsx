@@ -1,6 +1,16 @@
 import { createContext, useState } from "react";
 
-const AnimeContext = createContext({});
+interface AnimeWatchingContext {
+  watching: any[];
+  addWatching: (title: string) => void;
+}
+
+// const defaultState = {
+//   watching: []
+// };
+const AnimeContext = createContext<AnimeWatchingContext>(
+  {} as AnimeWatchingContext
+);
 
 export function AnimeProvider({ children }: { children: React.ReactNode }) {
   const [watching, setWatching] = useState([]);
