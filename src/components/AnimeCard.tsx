@@ -26,7 +26,6 @@ type AnimeCardProps = {
 };
 
 const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
-  const { watching } = useContext(AnimeContext);
   const { addWatching } = useContext(AnimeContext);
 
   return (
@@ -41,7 +40,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
         </div>
         <div className="flex">
           <button
-            onClick={() => addWatching(ani.title)}
+            onClick={() => addWatching(ani.title, ani.images.webp.image_url)}
             className="w-full border-2 border-red-500"
           >
             Bookmark

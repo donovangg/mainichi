@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 interface AnimeWatchingContext {
   watching: any[];
-  addWatching: (title: string) => void;
+  addWatching: (title: string, image_url: string) => void;
 }
 
 // const defaultState = {
@@ -15,8 +15,8 @@ const AnimeContext = createContext<AnimeWatchingContext>(
 export function AnimeProvider({ children }: { children: React.ReactNode }) {
   const [watching, setWatching] = useState([]);
 
-  const addWatching = (title: string) => {
-    setWatching((prevState) => [...prevState, { title }]);
+  const addWatching = (title: string, image_url: string) => {
+    setWatching((prevState) => [...prevState, { title, image_url }]);
   };
 
   return (
