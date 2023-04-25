@@ -30,16 +30,17 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
       <div className="flex flex-col">
         <div>
           <img
-            className="object-cover h-64 w-full"
+            className="h-64 w-full object-cover"
             src={ani.images.webp.image_url}
             alt={ani.title}
           />
         </div>
-        <div>
-          <button className="border-2 border-red-500 w-full">Bookmark</button>
+        <div className="flex">
+          <button className="w-full border-2 border-red-500">Bookmark</button>
+          <button className="w-full border-2 border-red-500">Bookmark</button>
         </div>
-        <div className="p-2">
-          <h2 className="truncate">{ani.title}</h2>
+        <div className="h-16 p-2 overflow-hidden">
+          <h2 className="break-words">{ani.title}</h2>
         </div>
       </div>
     </li>
