@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import AnimeCard from "./AnimeCard";
+import AnimeContext from "~/context/AnimeContext";
 
 type AnimeProps = {
   anime: {
@@ -25,9 +26,15 @@ type AnimeProps = {
 };
 
 const AnimeList: React.FC<AnimeProps> = ({ anime }) => {
+  const { watching } = useContext(AnimeContext);
   return (
-    <section className="border-2 border-blue-700 w-full">
-      <div className="w-11/12 mx-auto">
+    <section className="w-full border-2 border-blue-700">
+      <section>
+        {watching.map((w) => (
+          <li>{w.title}</li>
+        ))}
+      </section>
+      <div className="mx-auto w-11/12">
         <ul className="flex flex-wrap gap-4">
           {anime.map((ani) => (
             <AnimeCard ani={ani} />
