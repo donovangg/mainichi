@@ -4,7 +4,7 @@ import Link from "next/link";
 import AnimeContext from "~/context/AnimeContext";
 import { useContext } from "react";
 import Navbar from "~/components/Navbar";
-
+import WatchList from "~/components/WatchList";
 
 interface animeProps {
   anime: {
@@ -14,23 +14,23 @@ interface animeProps {
     images: {
       jpg: string;
       webp: {
-        image_url: string,
-      }
+        image_url: string;
+      };
     };
     genres: [
       {
-        name: string,
-        url: string
+        name: string;
+        url: string;
       }
-    ]
+    ];
     broadcast: {
-      day: string
-    }
+      day: string;
+    };
   }[];
 }
 
 const Home: NextPage<animeProps> = () => {
-    const { watching } = useContext(AnimeContext);
+  const { watching } = useContext(AnimeContext);
   return (
     <>
       <Head>
@@ -42,6 +42,9 @@ const Home: NextPage<animeProps> = () => {
       <main className="flex min-h-screen flex-col items-center justify-center">
         <h1>Uwuuuuu</h1>
         <h2>Your watchlist</h2>
+        <div>
+          <WatchList />
+        </div>
       </main>
     </>
   );
