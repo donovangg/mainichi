@@ -32,20 +32,113 @@ const AnimeList: React.FC<AnimeProps> = ({ anime }) => {
   let today = format(new Date(), "EEEE");
   return (
     <section className="w-full border-2 border-blue-700">
-      <div className="mx-auto w-11/12">
+      <section className="mx-auto w-11/12 border-2 border-red-600">
         {/* <ul className="flex flex-wrap gap-4">
           {anime.map((ani) => (
             <AnimeCard ani={ani} />
           ))}
         </ul> */}
-        <ul>
+        Hello It is {today}
+        <ul className="flex flex-wrap gap-4">
           {anime.map((ani) => (
-            <div>
+            <div key={ani.mal_id}>
               {ani.broadcast.day.includes(today) ? <AnimeCard ani={ani} /> : ""}
             </div>
           ))}
         </ul>
-      </div>
+      </section>
+      <section className="mx-auto w-11/12 border-2 border-green-600">
+        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+          {anime.map((ani) => (
+            <>
+              {ani.broadcast.day.includes("Monday") ? (
+                <AnimeCard key={ani.mal_id} ani={ani} />
+              ) : (
+                ""
+              )}
+            </>
+          ))}
+        </ul>
+      </section>
+      <section className="mx-auto w-11/12 border-2 border-green-600">
+        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+          {anime.map((ani) => (
+            <>
+              {ani.broadcast.day.includes("Tuesday") ? (
+                <AnimeCard key={ani.mal_id} ani={ani} />
+              ) : (
+                ""
+              )}
+            </>
+          ))}
+        </ul>
+      </section>
+      <section className="mx-auto w-11/12 border-2 border-green-600">
+        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+          {anime.map((ani) => (
+            <>
+              {ani.broadcast.day.includes("Wednesday") ? (
+                <AnimeCard key={ani.mal_id} ani={ani} />
+              ) : (
+                ""
+              )}
+            </>
+          ))}
+        </ul>
+      </section>
+      <section className="mx-auto w-11/12 border-2 border-green-600">
+        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+          {anime.map((ani) => (
+            <>
+              {ani.broadcast.day.includes("Thursday") ? (
+                <AnimeCard key={ani.mal_id} ani={ani} />
+              ) : (
+                ""
+              )}
+            </>
+          ))}
+        </ul>
+      </section>
+      <section className="mx-auto w-11/12 border-2 border-green-600">
+        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+          {anime.map((ani) => (
+            <>
+              {ani.broadcast.day.includes("Friday") ? (
+                <AnimeCard key={ani.mal_id} ani={ani} />
+              ) : (
+                ""
+              )}
+            </>
+          ))}
+        </ul>
+      </section>
+      <section className="mx-auto w-11/12 border-2 border-green-600">
+        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+          {anime.map((ani) => (
+            <>
+              {ani.broadcast.day.includes("Saturday") ? (
+                <AnimeCard key={ani.mal_id} ani={ani} />
+              ) : (
+                ""
+              )}
+            </>
+          ))}
+        </ul>
+      </section>
+      <section className="mx-auto w-11/12 border-2 border-green-600">
+        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+          {anime.map((ani) => (
+            <>
+              {ani.broadcast.day.includes("Sunday") ? (
+                <AnimeCard key={ani.mal_id} ani={ani} />
+              ) : (
+                ""
+              )}
+            </>
+          ))}
+        </ul>
+      </section>
+
       <WatchList />
     </section>
   );
