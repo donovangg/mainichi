@@ -4,7 +4,7 @@ import Link from 'next/link'
 const Navbar = () => {
   return (
     <div>
-        <nav className="relative flex pt-2 mx-auto w-5/6 text-sm font-medium text-stone-50">
+        <nav className="relative flex pt-2 mx-auto w-full p-6 text-sm font-medium bg-zinc-800 text-stone-50">
   <ul
     className="w-full relative items-center mx-auto grid grid-cols-4 md:w-full lg:w-full"
   >

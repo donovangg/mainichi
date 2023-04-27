@@ -28,30 +28,17 @@ type AnimeProps = {
 };
 
 const AnimeList: React.FC<AnimeProps> = ({ anime }) => {
+  console.log(anime);
   const { watching } = useContext(AnimeContext);
   let today = format(new Date(), "EEEE");
   return (
-    <section className="w-full border-2 border-blue-700">
-      <section className="mx-auto w-11/12 border-2 border-red-600">
-        {/* <ul className="flex flex-wrap gap-4">
-          {anime.map((ani) => (
-            <AnimeCard ani={ani} />
-          ))}
-        </ul> */}
-        Hello It is {today}
-        <ul className="flex flex-wrap gap-4">
-          {anime.map((ani) => (
-            <div key={ani.mal_id}>
-              {ani.broadcast.day.includes(today) ? <AnimeCard ani={ani} /> : ""}
-            </div>
-          ))}
-        </ul>
-      </section>
-      <section className="mx-auto w-11/12 border-2 border-green-600">
-        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+    <section className="w-full flex flex-col gap-8 border-2 border-blue-700">
+      <section className="mx-auto w-10/12 border-2 bg-zinc-800 rounded-md border-green-600">
+        <h2>Happy {today}! This is on today:</h2>
+        <ul className="grid gap-4 my-4 grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
           {anime.map((ani) => (
             <>
-              {ani.broadcast.day.includes("Monday") ? (
+              {ani.broadcast.day.includes(today) ? (
                 <AnimeCard key={ani.mal_id} ani={ani} />
               ) : (
                 ""
@@ -60,8 +47,22 @@ const AnimeList: React.FC<AnimeProps> = ({ anime }) => {
           ))}
         </ul>
       </section>
-      <section className="mx-auto w-11/12 border-2 border-green-600">
-        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+      <section className="mx-auto w-10/12 border-2 bg-zinc-800 rounded-md border-green-600">
+        <h2>Monday</h2>
+        <ul className="grid gap-4 my-4 grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
+          {anime.map((ani) => (
+            <>
+              {ani.broadcast.day.includes("Mondays") ? (
+                <AnimeCard key={ani.mal_id} ani={ani} />
+              ) : (
+                ""
+              )}
+            </>
+          ))}
+        </ul>
+      </section>
+      <section className="mx-auto w-10/12 border-2 bg-zinc-800 rounded-md border-green-600">
+        <ul className="grid gap-4 my-4 grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
           {anime.map((ani) => (
             <>
               {ani.broadcast.day.includes("Tuesday") ? (
@@ -73,11 +74,11 @@ const AnimeList: React.FC<AnimeProps> = ({ anime }) => {
           ))}
         </ul>
       </section>
-      <section className="mx-auto w-11/12 border-2 border-green-600">
-        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+      <section className="mx-auto w-10/12 border-2 bg-zinc-800 rounded-md border-green-600">
+        <ul className="grid gap-4 my-4 grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
           {anime.map((ani) => (
             <>
-              {ani.broadcast.day.includes("Wednesday") ? (
+              {ani.broadcast.day.includes("Wednesdays") ? (
                 <AnimeCard key={ani.mal_id} ani={ani} />
               ) : (
                 ""
@@ -86,11 +87,11 @@ const AnimeList: React.FC<AnimeProps> = ({ anime }) => {
           ))}
         </ul>
       </section>
-      <section className="mx-auto w-11/12 border-2 border-green-600">
-        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+      <section className="mx-auto w-10/12 border-2 bg-zinc-800 rounded-md border-green-600">
+        <ul className="grid gap-4 my-4 grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
           {anime.map((ani) => (
             <>
-              {ani.broadcast.day.includes("Thursday") ? (
+              {ani.broadcast.day.includes("Thursdays") ? (
                 <AnimeCard key={ani.mal_id} ani={ani} />
               ) : (
                 ""
@@ -99,8 +100,8 @@ const AnimeList: React.FC<AnimeProps> = ({ anime }) => {
           ))}
         </ul>
       </section>
-      <section className="mx-auto w-11/12 border-2 border-green-600">
-        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+      <section className="mx-auto w-10/12 border-2 bg-zinc-800 rounded-md border-green-600">
+        <ul className="grid gap-4 my-4 grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
           {anime.map((ani) => (
             <>
               {ani.broadcast.day.includes("Friday") ? (
@@ -112,8 +113,8 @@ const AnimeList: React.FC<AnimeProps> = ({ anime }) => {
           ))}
         </ul>
       </section>
-      <section className="mx-auto w-11/12 border-2 border-green-600">
-        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+      <section className="mx-auto w-10/12 border-2 bg-zinc-800 rounded-md border-green-600">
+        <ul className="grid gap-4 my-4 grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
           {anime.map((ani) => (
             <>
               {ani.broadcast.day.includes("Saturday") ? (
@@ -125,11 +126,11 @@ const AnimeList: React.FC<AnimeProps> = ({ anime }) => {
           ))}
         </ul>
       </section>
-      <section className="mx-auto w-11/12 border-2 border-green-600">
-        <ul className="flex list-none flex-wrap items-center justify-center gap-2">
+      <section className="mx-auto w-10/12 border-2 bg-zinc-800 rounded-md border-green-600">
+        <ul className="grid gap-4 my-4 grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
           {anime.map((ani) => (
             <>
-              {ani.broadcast.day.includes("Sunday") ? (
+              {ani.broadcast.day.includes("Sundays") ? (
                 <AnimeCard key={ani.mal_id} ani={ani} />
               ) : (
                 ""
@@ -138,8 +139,6 @@ const AnimeList: React.FC<AnimeProps> = ({ anime }) => {
           ))}
         </ul>
       </section>
-
-      <WatchList />
     </section>
   );
 };
