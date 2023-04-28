@@ -38,7 +38,7 @@ const Home: NextPage<animeProps> = ({ anime }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className="flex min-h-screen bg-natural-400 flex-col items-center justify-center">
+      <main className="flex min-h-screen bg-slate-100 flex-col items-center justify-center">
         <h1>Uwuuuuu</h1>
         <AnimeList anime={anime} />
       </main>
