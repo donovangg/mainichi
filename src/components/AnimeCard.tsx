@@ -1,6 +1,7 @@
 import React from "react";
 import AnimeContext from "~/context/AnimeContext";
 import { useContext } from "react";
+import { FaRegBookmark, FaExternalLinkAlt } from "react-icons/fa";
 
 type AnimeCardProps = {
   ani: {
@@ -41,11 +42,13 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
         <div className="flex">
           <button
             onClick={() => addWatching(ani.title, ani.images.webp.image_url)}
-            className="w-full border-2 border-red-500"
+            className="w-full border-2 flex justify-center items-center p-1 border-red-500"
           >
-            Bookmark
+            <FaRegBookmark />
           </button>
-          <button className="w-full border-2 border-red-500">Bookmark</button>
+          <button className="w-full flex justify-center items-center border-2 border-red-500">
+            <FaExternalLinkAlt />
+          </button>
         </div>
         <div className="h-16 overflow-hidden p-2">
           <h2 className="break-words">{ani.title}</h2>
