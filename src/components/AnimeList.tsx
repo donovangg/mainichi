@@ -33,7 +33,7 @@ const AnimeList: React.FC<AnimeProps> = ({ anime }) => {
   let today = format(new Date(), "EEEE");
   return (
     <section className="w-full flex flex-col gap-8 border-2 border-blue-700">
-      <section className="mx-auto w-10/12 border-2 bg-zinc-800 rounded-md border-green-600">
+      <section className="mx-auto w-10/12 border-2 bg-natural-100 rounded-md shadow-lg">
         <h2>Happy {today}! This is on today:</h2>
         <ul className="grid gap-4 my-4 grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
           {anime.map((ani) => (
