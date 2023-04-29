@@ -27,10 +27,15 @@ type AnimeCardProps = {
 };
 
 const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
-  const { addWatching } = useContext(AnimeContext);
+  const { addWatching, watching } = useContext(AnimeContext);
+
+  // so user can't keep adding
+  let watchingAnime = watching.find((w) => w.mal_id === ani.mal_id);
+
+  const watchButtonDisabled = watchingAnime ? true : false;
 
   return (
-    <li className="w-48 border-2 border-red-500">
+    <li className="w-48  ">
       <div className="flex flex-col">
         <div>
           <img
@@ -41,12 +46,14 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
         </div>
         <div className="flex">
           <button
-            onClick={() => addWatching(ani.title, ani.images.webp.image_url)}
-            className="w-full border-2 flex justify-center items-center p-1 border-red-500"
+            onClick={() => addWatching(ani.title, ani.images.webp.image_url, ani.mal_id)}
+            disabled={watchButtonDisabled}
+            className={`flex w-full items-center justify-center p-1 ${watchButtonDisabled ? 'bg-red-600': 'bg-green-600'}`}
           >
+            add
             <FaRegBookmark />
           </button>
-          <button className="w-full flex justify-center items-center border-2 border-red-500">
+          <button className="flex w-full items-center justify-center  ">
             <FaExternalLinkAlt />
           </button>
         </div>
