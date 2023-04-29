@@ -8,7 +8,7 @@ type WatchingCardProps = {
 const WatchingCard: React.FC<WatchingCardProps> = ({ title, image_url }) => {
   return (
     <div>
-      <li className="flex flex-col items-center rounded-lg border border-gray-200 bg-white shadow   md:max-w-xl md:flex-row">
+      <li className="flex flex-col items-center rounded-lg border border-gray-200 bg-white shadow   md:max-w-md md:flex-row">
         <img
           className="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
           src={image_url}

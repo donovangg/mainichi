@@ -10,14 +10,13 @@ const WatchList: React.FC = () => {
   console.log(watching);
   return (
     <section>
-        <h2>Watching</h2>
-      <div>
-        <ul>
-          <section>
+      <div className="border-2 border-green-600 w-10/12 mx-auto">
+        <ul className="flex flex-wrap gap-5">
+          <>
             {watching.map((w) => (
               <WatchingCard title={w.title} image_url={w.image_url}/>
             ))}
-          </section>
+          </>
         </ul>
       </div>
     </section>

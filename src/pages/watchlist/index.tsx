@@ -40,22 +40,15 @@ const Home: NextPage<animeProps> = () => {
       </Head>
       <Navbar />
       <main className="flex min-h-screen flex-col items-center justify-center">
-        <h1>Uwuuuuu</h1>
-        <h2>Your watchlist</h2>
-        <div>
-          <WatchList />
-        </div>
+        <section>
+          <h1 className="text-2xl">Your watchlist</h1>
+          <div>
+            <WatchList />
+          </div>
+        </section>
       </main>
     </>
   );
 };
-
-// export async function getServerSideProps() {
-//   const res = await fetch("https://api.jikan.moe/v4/seasons/2023/spring");
-//   const data = await res.json();
-//   const anime = data.data;
-
-//   return { props: { anime } };
-// }
 
 export default Home;
