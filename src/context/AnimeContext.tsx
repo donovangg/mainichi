@@ -5,9 +5,6 @@ interface AnimeWatchingContext {
   addWatching: (title: string, image_url: string, mal_id: number) => void;
 }
 
-// const defaultState = {
-//   watching: []
-// };
 const AnimeContext = createContext<AnimeWatchingContext>(
   {} as AnimeWatchingContext
 );

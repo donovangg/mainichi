@@ -26,10 +26,22 @@ interface animeProps {
       day: string;
     };
   }[];
+  week: {
+    id: number,
+    day: string
+  }[]
 }
 
 const Home: NextPage<animeProps> = ({ anime }) => {
-  console.log(anime);
+  let week = [
+    { id: 1, day: "Mondays" },
+    { id: 2, day: "Tuesdays" },
+    { id: 3, day: "Wednesdays" },
+    { id: 4, day: "Thursdays" },
+    { id: 5, day: "Fridays" },
+    { id: 6, day: "Saturdays" },
+    { id: 7, day: "Sundays" },
+  ];
   return (
     <>
       <Head>
@@ -38,9 +50,9 @@ const Home: NextPage<animeProps> = ({ anime }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className="flex min-h-screen bg-slate-100 flex-col items-center justify-center">
+      <main className="flex min-h-screen flex-col items-center justify-center bg-slate-100">
         <h1>Uwuuuuu</h1>
-        <AnimeList anime={anime} />
+        <AnimeList anime={anime} week={week} />
       </main>
     </>
   );
