@@ -50,8 +50,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
             disabled={watchButtonDisabled}
             className={`flex w-full items-center justify-center p-1 ${watchButtonDisabled ? 'bg-red-600': 'bg-green-600'}`}
           >
-            add
-            <FaRegBookmark />
+            {watchButtonDisabled ? 'Added' : <FaRegBookmark />}
           </button>
           <button className="flex w-full items-center justify-center  ">
             <FaExternalLinkAlt />
