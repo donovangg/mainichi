@@ -35,7 +35,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
   const watchButtonDisabled = watchingAnime ? true : false;
 
   return (
-    <li className="w-48  ">
+    <li className="w-48 rounded-lg overflow-hidden shadow-xl">
       <div className="flex flex-col">
         <div>
           <img
@@ -46,17 +46,21 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
         </div>
         <div className="flex">
           <button
-            onClick={() => addWatching(ani.title, ani.images.webp.image_url, ani.mal_id)}
+            onClick={() =>
+              addWatching(ani.title, ani.images.webp.image_url, ani.mal_id)
+            }
             disabled={watchButtonDisabled}
-            className={`flex w-full items-center justify-center p-1 ${watchButtonDisabled ? 'bg-red-600': 'bg-green-600'}`}
+            className={`bg-blue-500 w-full flex justify-center resize-none hover:bg-blue-700 text-white text-sm py-2 px-4 border border-blue-700  ${
+              watchButtonDisabled ? "bg-blue-500 text-white font-bold py-2 px-4 opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            {watchButtonDisabled ? 'Added' : <FaRegBookmark />}
+            {watchButtonDisabled ? "added"  : <FaRegBookmark className="text-xl" />}
           </button>
-          <button className="flex w-full items-center justify-center  ">
-            <FaExternalLinkAlt />
+          <button className="flex w-full items-center p-2 justify-center  ">
+            <FaExternalLinkAlt className="text-xl" />
           </button>
         </div>
-        <div className="h-16 overflow-hidden p-2">
+        <div className="h-16 overflow-hidden mt-4 p-2">
           <h2 className="break-words">{ani.title}</h2>
         </div>
       </div>
