@@ -10,7 +10,7 @@ const WatchList: React.FC = () => {
   console.log(watching);
   return (
     <section>
-      <div className="border-2 border-green-600 w-10/12 mx-auto">
+      <div className="border-2 border-green-600 w-11/12 mx-auto">
         <ul className="flex flex-wrap gap-5">
           <>
             {watching.map((w) => (

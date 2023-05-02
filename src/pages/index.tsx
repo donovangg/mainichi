@@ -24,6 +24,9 @@ interface animeProps {
     ];
     broadcast: {
       day: string;
+      time: string,
+      timezone: string,
+      string: string
     };
   }[];
   week: {
@@ -50,8 +53,7 @@ const Home: NextPage<animeProps> = ({ anime }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className="flex min-h-screen flex-col items-center justify-center bg-slate-100">
-        <h1>Uwuuuuu</h1>
+      <main className="flex min-h-screen flex-col items-center justify-center pt-10 bg-slate-100">
         <AnimeList anime={anime} week={week} />
       </main>
     </>
