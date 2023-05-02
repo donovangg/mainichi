@@ -22,6 +22,8 @@ type AnimeCardProps = {
     ];
     broadcast: {
       day: string;
+      time: string;
+      timezone: string;
     };
   };
 };
@@ -35,7 +37,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
   const watchButtonDisabled = watchingAnime ? true : false;
 
   return (
-    <li className="w-48 rounded-lg overflow-hidden shadow-xl">
+    <li className="w-48 overflow-hidden rounded-lg shadow-xl">
       <div className="flex flex-col">
         <div>
           <img
@@ -47,20 +49,34 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
         <div className="flex">
           <button
             onClick={() =>
-              addWatching(ani.title, ani.images.webp.image_url, ani.mal_id)
+              addWatching(
+                ani.title,
+                ani.images.webp.image_url,
+                ani.mal_id,
+                ani.url,
+                ani.broadcast.day,
+                ani.broadcast.timezone,
+                ani.broadcast.time
+              )
             }
             disabled={watchButtonDisabled}
-            className={`bg-blue-500 w-full flex justify-center resize-none hover:bg-blue-700 text-white text-sm py-2 px-4 border border-blue-700  ${
-              watchButtonDisabled ? "bg-blue-500 text-white font-bold py-2 px-4 opacity-50 cursor-not-allowed" : ""
+            className={`flex w-full resize-none justify-center border border-blue-700 bg-blue-500 px-4 py-2 text-sm text-white hover:bg-blue-700  ${
+              watchButtonDisabled
+                ? "cursor-not-allowed bg-blue-500 px-4 py-2 font-bold text-white opacity-50"
+                : ""
             }`}
           >
-            {watchButtonDisabled ? "added"  : <FaRegBookmark className="text-xl" />}
+            {watchButtonDisabled ? (
+              "added"
+            ) : (
+              <FaRegBookmark className="text-xl" />
+            )}
           </button>
-          <button className="flex w-full items-center p-2 justify-center  ">
+          <button className="flex w-full items-center justify-center p-2  ">
             <FaExternalLinkAlt className="text-xl" />
           </button>
         </div>
-        <div className="h-16 overflow-hidden mt-4 p-2">
+        <div className="mt-4 h-16 overflow-hidden p-2">
           <h2 className="break-words">{ani.title}</h2>
         </div>
       </div>
