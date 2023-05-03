@@ -3,9 +3,13 @@ import React from "react";
 type WatchingCardProps = {
   title: string;
   image_url: string;
+  url: string,
+  day: string,
+  timezone: string,
+  time: string
 };
 
-const WatchingCard: React.FC<WatchingCardProps> = ({ title, image_url }) => {
+const WatchingCard: React.FC<WatchingCardProps> = ({ title, image_url, url, day, timezone, time }) => {
   return (
     <div>
       <li className="flex flex-col items-center rounded-lg border border-gray-200 bg-white shadow   md:max-w-md md:flex-row">
@@ -18,10 +22,10 @@ const WatchingCard: React.FC<WatchingCardProps> = ({ title, image_url }) => {
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             {title}
           </h5>
-          <p className="mb-3 font-normal text-gray-700">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
-          </p>
+           <p>{time}</p>
+           <p>{timezone}</p>
+           <p></p>
+           <a href={url}>Here</a>
         </div>
       </li>
     </div>
