@@ -7,9 +7,10 @@ const Navbar = () => {
     <>
       <nav className="flex flex-wrap items-center justify-between border-t-2 border-solid border-blue-700 bg-white py-4 shadow lg:px-12">
         <div className="flex w-full justify-between border-b-2 border-solid border-gray-300 pb-5 pl-6 pr-2 lg:w-auto lg:border-b-0 lg:pb-0">
+          
           <div className="mr-16 flex flex-shrink-0 items-center text-gray-800">
             <span className="text-xl font-semibold tracking-tight">
-              My Navbar
+              mainichi
             </span>
           </div>
           <div className="block lg:hidden ">

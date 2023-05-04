@@ -41,7 +41,9 @@ const Home: NextPage<animeProps> = () => {
       <Navbar />
       <main className="flex min-h-screen flex-col items-center justify-center">
         <section>
-          <h1 className="text-2xl">Your watchlist</h1>
+          <div className="mx-auto w-11/12">
+            <h1 className="text-4xl my-8">Your watchlist</h1>
+          </div>
           <div>
             <WatchList />
           </div>
