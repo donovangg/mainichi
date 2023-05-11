@@ -42,7 +42,7 @@ const Home: NextPage<animeProps> = () => {
       <main className="flex min-h-screen flex-col items-center justify-center">
         <section>
           <div className="mx-auto w-11/12">
-            <h1 className="text-4xl my-8">Your watchlist</h1>
+            <h1 className="text-4xl my-8" data-testid="watchlist-h1">Your watchlist</h1>
           </div>
           <div>
             <WatchList />

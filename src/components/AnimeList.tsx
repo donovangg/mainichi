@@ -14,12 +14,6 @@ type AnimeProps = {
         image_url: string;
       };
     };
-    genres: [
-      {
-        name: string;
-        url: string;
-      }
-    ];
     broadcast: {
       day: string;
       time: string,

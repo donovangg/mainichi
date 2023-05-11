@@ -1,7 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import AnimeList from '~/components/AnimeList';
+import AnimeCard from '~/components/AnimeCard';
 import { format, compareAsc } from "date-fns";
+
+global.fetch = jest.fn()
 
 let week = [
     { id: 1, day: "Mondays" },

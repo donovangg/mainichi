@@ -14,12 +14,6 @@ type AnimeCardProps = {
         image_url: string;
       };
     };
-    genres: [
-      {
-        name: string;
-        url: string;
-      }
-    ];
     broadcast: {
       day: string;
       time: string;
@@ -60,6 +54,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
               )
             }
             disabled={watchButtonDisabled}
+            data-testid="bookmark-btn"
             className={`flex w-full resize-none justify-center border border-blue-700 bg-blue-500 px-4 py-2 text-sm text-white hover:bg-blue-700  ${
               watchButtonDisabled
                 ? "cursor-not-allowed bg-blue-500 px-4 py-2 font-bold text-white opacity-50"
@@ -69,15 +64,15 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
             {watchButtonDisabled ? (
               "added"
             ) : (
-              <FaRegBookmark className="text-xl" />
+              <FaRegBookmark className="text-xl"/>
             )}
           </button>
-          <button className="flex w-full items-center justify-center p-2  ">
+          <button className="flex w-full items-center justify-center p-2">
             <FaExternalLinkAlt className="text-xl" />
           </button>
         </div>
         <div className="mt-4 h-16 overflow-hidden p-2">
-          <h2 className="break-words">{ani.title}</h2>
+          <h2 className="break-words" data-testid="title-h2">{ani.title}</h2>
         </div>
       </div>
     </li>
