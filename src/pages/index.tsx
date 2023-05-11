@@ -4,6 +4,7 @@ import Link from "next/link";
 import AnimeList from "~/components/AnimeList";
 import { AnimeProvider } from "~/context/AnimeContext";
 import Navbar from "~/components/Navbar";
+import { format, compareAsc } from "date-fns";
 
 interface animeProps {
   anime: {
@@ -36,6 +37,9 @@ interface animeProps {
 }
 
 const Home: NextPage<animeProps> = ({ anime }) => {
+
+  let today = format(new Date(), "EEEE");
+
   let week = [
     { id: 1, day: "Mondays" },
     { id: 2, day: "Tuesdays" },
@@ -54,7 +58,7 @@ const Home: NextPage<animeProps> = ({ anime }) => {
       </Head>
       <Navbar />
       <main className="flex min-h-screen flex-col items-center justify-center pt-10 bg-slate-100">
-        <AnimeList anime={anime} week={week} />
+        <AnimeList today={today} anime={anime} week={week} />
       </main>
     </>
   );
