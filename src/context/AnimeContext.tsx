@@ -35,8 +35,12 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
     ]);
   };
 
+  const deleteWatching = (mal_id) => {
+    setWatching((prevState) => prevState.filter((a) => a.mal_id !== mal_id));
+  };
+
   return (
-    <AnimeContext.Provider value={{ watching, addWatching }}>
+    <AnimeContext.Provider value={{ watching, addWatching, deleteWatching }}>
       {children}
     </AnimeContext.Provider>
   );
