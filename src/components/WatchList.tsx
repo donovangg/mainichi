@@ -19,7 +19,7 @@ const WatchList: React.FC = () => {
                 day={w.day}
                 timezone={w.timezone}
                 time={w.time}
-                key={w.mal_id}
+                mal_id={w.mal_id}
               />
             ))}
           </>

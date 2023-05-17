@@ -31,24 +31,25 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
           src={image_url}
           alt={title}
         />
-        <FaTrash
-          className="absolute right-0 top-0 text-3xl"
+        <button
           onClick={() => {
             deleteWatching(mal_id);
           }}
-        />
+        >
+          <FaTrash className="absolute right-0 top-0 text-3xl" />
+        </button>
         <div className="flex flex-col justify-between p-4 leading-normal">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             {title}
           </h5>
-
+      
           <div className="flex gap-1">
             <span>{day}</span>
             <span>{time}</span>
           </div>
           <span>{timezone}</span>
-          <p></p>
           <a href={url}>Here</a>
+
         </div>
       </li>
     </div>
