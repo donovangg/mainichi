@@ -1,5 +1,7 @@
 import React from "react";
 import { FaTrash } from "react-icons/fa";
+import AnimeContext from "~/context/AnimeContext";
+import { useContext } from "react";
 
 type WatchingCardProps = {
   title: string;
@@ -20,6 +22,7 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
   time,
   mal_id,
 }) => {
+  const { addWatching, watching, deleteWatching } = useContext(AnimeContext);
   return (
     <div key={mal_id}>
       <li className="sm: relative flex w-96 flex-col items-center rounded-lg border border-gray-200 bg-white shadow md:w-96 md:flex-row lg:w-[30rem]">
@@ -28,7 +31,12 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
           src={image_url}
           alt={title}
         />
-        <FaTrash className="absolute right-0 top-0 " />
+        <FaTrash
+          className="absolute right-0 top-0 text-3xl"
+          onClick={() => {
+            deleteWatching(mal_id);
+          }}
+        />
         <div className="flex flex-col justify-between p-4 leading-normal">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             {title}
