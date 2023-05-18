@@ -41,9 +41,9 @@ const Home: NextPage<animeProps> = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className="flex min-h-screen flex-col items-center justify-center">
-        <section>
-          <div className="mx-auto w-11/12">
+      <main className="flex min-h-screen flex-col items-center">
+        <section className="mx-auto w-11/12">
+          <div className=" mx-auto w-11/12 ">
             <h1 className="my-8 text-4xl" data-testid="watchlist-h1">
               Your watchlist
             </h1>
