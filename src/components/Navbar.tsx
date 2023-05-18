@@ -1,13 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import { FaBookmark } from "react-icons/fa";
+import { useSession, signOut, signIn } from "next-auth/react";
 
 const Navbar = () => {
+  const { data: session } = useSession();
   return (
     <>
       <nav className="flex flex-wrap items-center justify-between border-t-2 border-solid border-blue-700 bg-white py-4 shadow lg:px-12">
         <div className="flex w-full justify-between border-b-2 border-solid border-gray-300 pb-5 pl-6 pr-2 lg:w-auto lg:border-b-0 lg:pb-0">
-          
           <div className="mr-16 flex flex-shrink-0 items-center text-gray-800">
             <span className="text-xl font-semibold tracking-tight">
               mainichi
@@ -49,19 +50,17 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="flex ">
-            <a
+            {!session ? (
+              <button onClick={() => signIn()}>Sign In</button>
+            ) : (
+              <button onClick={() => signOut()}>Sign Out</button>
+            )}
+            {/* <a
               href="#"
               className="text-md ml-2 mt-4 block rounded px-4 py-2 font-bold text-blue-700 hover:bg-blue-700 hover:text-white lg:mt-0"
             >
               Sign Up
-            </a>
-
-            <a
-              href="#"
-              className=" text-md ml-2 mt-4  block rounded px-4 py-2 font-bold text-blue-700 hover:bg-blue-700 hover:text-white lg:mt-0"
-            >
-              Login
-            </a>
+            </a> */}
           </div>
         </div>
       </nav>
