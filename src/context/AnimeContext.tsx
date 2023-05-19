@@ -11,7 +11,7 @@ interface AnimeWatchingContext {
     timezone: string,
     time: string
   ) => void;
-  deleteWatching: (mal_id: any) => void; 
+  deleteWatching: (mal_id: any) => void;
 }
 
 const AnimeContext = createContext<AnimeWatchingContext>(

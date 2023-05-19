@@ -12,6 +12,7 @@ const WatchList: React.FC = () => {
         <ul className="flex flex-wrap gap-5">
           <>
             {watching.map((w) => (
+              <div key={w.mal_id}>
               <WatchingCard
                 title={w.title}
                 image_url={w.image_url}
@@ -21,6 +22,7 @@ const WatchList: React.FC = () => {
                 time={w.time}
                 mal_id={w.mal_id}
               />
+              </div>
             ))}
           </>
         </ul>
