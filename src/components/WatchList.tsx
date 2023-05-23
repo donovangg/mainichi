@@ -7,9 +7,9 @@ const WatchList: React.FC = () => {
   const { watching } = useContext(AnimeContext);
   console.log(watching);
   return (
-    <section className="mx-auto w-11/12">
+    <section className="mx-auto border-2 border-orange-700 w-11/12">
       <div className="">
-        <ul className="flex flex-wrap gap-5">
+        <ul className="flex flex-wrap w-full gap-5">
           <>
             {watching.map((w) => (
               <div key={w.mal_id}>

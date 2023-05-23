@@ -41,7 +41,7 @@ const Home: NextPage<animeProps> = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="flex min-h-screen flex-col items-center">
-        <div className="mx-auto w-11/12">
+        <section className="mx-auto w-11/12">
           <div className=" mx-auto w-11/12 ">
             <h1 className="my-8 text-4xl" data-testid="watchlist-h1">
               Your watchlist
@@ -57,7 +57,7 @@ const Home: NextPage<animeProps> = () => {
               </div>
             )}
           </div>
-        </div>
+        </section>
       </section>
     </>
   );
