@@ -25,7 +25,7 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
   const { addWatching, watching, deleteWatching } = useContext(AnimeContext);
   return (
     <div key={mal_id}>
-      <li className="sm: relative flex w-96 flex-col items-center rounded-lg border border-gray-200 bg-white shadow md:w-96 md:flex-row lg:w-[30rem]">
+      <li className="sm: relative flex w-80 flex-col items-center rounded-lg border border-gray-200 bg-white shadow md:w-96 md:flex-row lg:w-[30rem]">
         <img
           className="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
           src={image_url}
