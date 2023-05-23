@@ -64,15 +64,19 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
             {watchButtonDisabled ? (
               "added"
             ) : (
-              <FaRegBookmark className="text-xl"/>
+              <FaRegBookmark className="text-xl" />
             )}
           </button>
           <button className="flex w-full items-center justify-center p-2">
-            <FaExternalLinkAlt className="text-xl" />
+            <a href={ani.url} target="_blank">
+              <FaExternalLinkAlt className="text-xl" />
+            </a>
           </button>
         </div>
         <div className="mt-4 h-16 overflow-hidden p-2">
-          <h2 className="break-words" data-testid="title-h2">{ani.title}</h2>
+          <h2 className="break-words" data-testid="title-h2">
+            {ani.title}
+          </h2>
         </div>
       </div>
     </li>
