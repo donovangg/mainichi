@@ -11,10 +11,10 @@
     "test-ct": "playwright test -c playwright-ct.config.ts"
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.18.4",
     "@headlessui/react": "^1.7.14",
     "date-fns": "^2.29.3",
     "next": "^13.2.4",
+    "next-auth": "^4.22.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",

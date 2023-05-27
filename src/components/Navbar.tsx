@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { FaBookmark } from "react-icons/fa";
-import { UserButton, SignedIn, SignedOut } from "@clerk/clerk-react";
 
 const Navbar = () => {
   return (
@@ -53,14 +52,7 @@ const Navbar = () => {
                 </div>
               </Link>
             </div>
-            <SignedOut>
-              <Link href="/watchlist">
-                Sign In
-              </Link>
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
+   
           </div>
         </div>
       </nav>

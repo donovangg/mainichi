@@ -1,48 +1,26 @@
 import { type AppType } from "next/app";
 import { AnimeProvider } from "~/context/AnimeContext";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  RedirectToSignIn,
-} from "@clerk/nextjs";
-import { useRouter } from "next/router";
+import { SessionProvider } from "next-auth/react"
 
 import Layout from "~/components/Layout";
 
 import "~/styles/globals.css";
+import { Session } from "next-auth";
 
-const publicPages = ["/"];
 
-const MyApp: AppType<{ null }> = ({
+const MyApp: AppType<{ session: Session | null }> = ({
   Component,
-  pageProps: { ...pageProps },
+  pageProps: {session, ...pageProps },
 }) => {
-  const { pathname } = useRouter();
-
-  const isPublicPage = publicPages.includes(pathname);
 
   return (
-    <ClerkProvider {...pageProps}>
+    <SessionProvider session={session}>
       <AnimeProvider>
-        {isPublicPage ? (
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        ) : (
-          <>
-            <SignedIn>
-              <Layout>
-              <Component {...pageProps} />
-              </Layout>
-            </SignedIn>
-            <SignedOut>
-              <RedirectToSignIn />
-            </SignedOut>
-          </>
-        )}
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </AnimeProvider>
-    </ClerkProvider>
+    </SessionProvider>
   );
 };
 
