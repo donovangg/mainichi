@@ -5,7 +5,6 @@ import AnimeContext from "~/context/AnimeContext";
 import { useContext } from "react";
 import Navbar from "~/components/Navbar";
 import WatchList from "~/components/WatchList";
-import { useSession, signOut, signIn } from "next-auth/react";
 
 interface animeProps {
   anime: {
@@ -32,7 +31,6 @@ interface animeProps {
 
 const Home: NextPage<animeProps> = () => {
   const { watching } = useContext(AnimeContext);
-  const { data: session } = useSession();
   return (
     <>
       <Head>
@@ -48,14 +46,7 @@ const Home: NextPage<animeProps> = () => {
             </h1>
           </div>
           <div>
-            {session ? (
-              <WatchList />
-            ) : (
-              <div>
-                <h1>Sign in to add to your watchlist</h1>
-                <button onClick={() => signIn()}>Sign in</button>
-              </div>
-            )}
+            <WatchList />
           </div>
         </section>
       </section>
