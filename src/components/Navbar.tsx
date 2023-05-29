@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { FaBookmark } from "react-icons/fa";
 import { useSession, signOut, signIn } from "next-auth/react";
+import { signInWithGoogle } from "../firebase/firebase"
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -55,11 +56,12 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="flex ">
-              {!session ? (
+              <button onClick={signInWithGoogle}>Google</button>
+              {/* {!session ? (
                 <button onClick={() => signIn()}>Sign In</button>
               ) : (
                 <button onClick={() => signOut()}>Sign Out</button>
-              )}
+              )} */}
             </div>
           </div>
         </div>
