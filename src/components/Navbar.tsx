@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { FaBookmark } from "react-icons/fa";
+import { useSession, signOut, signIn } from "next-auth/react";
 
 const Navbar = () => {
+  const { data: session } = useSession();
   return (
     <>
       <nav className="flex w-full   bg-white shadow ">
@@ -52,7 +54,13 @@ const Navbar = () => {
                 </div>
               </Link>
             </div>
-   
+            <div className="flex ">
+              {!session ? (
+                <button onClick={() => signIn()}>Sign In</button>
+              ) : (
+                <button onClick={() => signOut()}>Sign Out</button>
+              )}
+            </div>
           </div>
         </div>
       </nav>
