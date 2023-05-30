@@ -2,8 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import AnimeContext from "~/context/AnimeContext";
-import { useContext } from "react";
-import Navbar from "~/components/Navbar";
+import { useContext, useEffect } from "react";
 import WatchList from "~/components/WatchList";
 
 interface animeProps {
@@ -27,10 +26,27 @@ interface animeProps {
       day: string;
     };
   }[];
+  saveWatchlist: () => void;
 }
 
 const Home: NextPage<animeProps> = () => {
-  const { watching } = useContext(AnimeContext);
+  const { watching, setWatching, saveWatchlist, getLocalWatchlist } =
+    useContext(AnimeContext);
+
+    useEffect(() => {
+      if (localStorage.getItem("watching") === null) {
+        localStorage.setItem("watching", JSON.stringify([]));
+      } else {
+      let localWatchlist = JSON.parse(localStorage.getItem("watching"));
+      console.log(localWatchlist);
+      setWatching(localWatchlist);
+      }
+    }, [])
+
+  useEffect(() => {
+    saveWatchlist();
+  }, [watching]);
+
   return (
     <>
       <Head>

@@ -12,11 +12,19 @@ interface AnimeWatchingContext {
     time: string
   ) => void;
   deleteWatching: (mal_id: any) => void;
+  saveWatchlist: () => void;
+  getLocalWatchlist: () => void;
 }
 
 const AnimeContext = createContext<AnimeWatchingContext>(
   {} as AnimeWatchingContext
 );
+
+// function getInitialState() {
+//   const watching = localStorage.getItem('watching')
+//   return watching ? JSON.parse(watching) : []
+// }
+
 
 export function AnimeProvider({ children }: { children: React.ReactNode }) {
   const [watching, setWatching] = useState([]);
@@ -40,8 +48,34 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
     setWatching((prevState) => prevState.filter((a) => a.mal_id !== mal_id));
   };
 
+  // Local storage
+
+  const saveWatchlist = () => {
+    localStorage.setItem("watching", JSON.stringify(watching));
+  };
+
+  const getLocalWatchlist = () => {
+    if (localStorage.getItem("watching") === null) {
+      localStorage.setItem("watching", JSON.stringify([]));
+    } else {
+    let localWatchlist = JSON.parse(localStorage.getItem("watching"));
+    console.log(localWatchlist);
+    setWatching(localWatchlist);
+    }
+
+  };
+
   return (
-    <AnimeContext.Provider value={{ watching, addWatching, deleteWatching }}>
+    <AnimeContext.Provider
+      value={{
+        watching,
+        setWatching,
+        addWatching,
+        deleteWatching,
+        saveWatchlist,
+        getLocalWatchlist,
+      }}
+    >
       {children}
     </AnimeContext.Provider>
   );
