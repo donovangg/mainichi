@@ -1,4 +1,6 @@
 import { createContext, useState } from "react";
+import { doc, setDoc } from "firebase/firestore"; 
+import   {db}   from '../firebase/firebase'
 
 interface AnimeWatchingContext {
   watching: any[];
@@ -36,6 +38,9 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
       ...prevState,
       { title, image_url, mal_id, url, day, timezone, time },
     ]);
+    setDoc(doc(db, "watchlist", "watching"), {
+      anime: watching
+    });
   };
 
   const deleteWatching = (mal_id) => {
