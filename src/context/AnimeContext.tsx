@@ -20,12 +20,6 @@ const AnimeContext = createContext<AnimeWatchingContext>(
   {} as AnimeWatchingContext
 );
 
-// function getInitialState() {
-//   const watching = localStorage.getItem('watching')
-//   return watching ? JSON.parse(watching) : []
-// }
-
-
 export function AnimeProvider({ children }: { children: React.ReactNode }) {
   const [watching, setWatching] = useState([]);
 
@@ -69,7 +63,6 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
     <AnimeContext.Provider
       value={{
         watching,
-        setWatching,
         addWatching,
         deleteWatching,
         saveWatchlist,

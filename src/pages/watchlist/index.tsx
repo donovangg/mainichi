@@ -30,7 +30,7 @@ interface animeProps {
 }
 
 const Home: NextPage<animeProps> = () => {
-  const { watching, setWatching, saveWatchlist, getLocalWatchlist } =
+  const { watching, saveWatchlist, getLocalWatchlist } =
     useContext(AnimeContext);
 
     useEffect(() => {
@@ -39,7 +39,6 @@ const Home: NextPage<animeProps> = () => {
       } else {
       let localWatchlist = JSON.parse(localStorage.getItem("watching"));
       console.log(localWatchlist);
-      setWatching(localWatchlist);
       }
     }, [])
 
