@@ -1,26 +1,19 @@
 import { type AppType } from "next/app";
 import { AnimeProvider } from "~/context/AnimeContext";
-import { SessionProvider } from "next-auth/react"
-
+import { SessionProvider } from "next-auth/react";
+import { AuthContextProvider } from "~/context/AuthContext";
 import Layout from "~/components/Layout";
-
 import "~/styles/globals.css";
-import { Session } from "next-auth";
 
-
-const MyApp: AppType<{ session: Session | null }> = ({
-  Component,
-  pageProps: {session, ...pageProps },
-}) => {
-
+const MyApp: AppType<{}> = ({ Component, pageProps: { ...pageProps } }) => {
   return (
-    <SessionProvider session={session}>
-      <AnimeProvider>
+    <AnimeProvider>
+      <AuthContextProvider>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </AnimeProvider>
-    </SessionProvider>
+      </AuthContextProvider>
+    </AnimeProvider>
   );
 };
 
