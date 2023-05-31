@@ -3,7 +3,13 @@ import Link from "next/link";
 import { FaBookmark } from "react-icons/fa";
 import { UserAuth } from '../context/AuthContext'
 
-const Navbar = () => {
+interface NavbarProps {
+  signedInUser: {
+    displayName: string;
+}
+}
+
+const Navbar:  React.FC<NavbarProps> = () => {
   const { signedInUser, logOut, signInWithGoogle} = UserAuth();
 
   const signOutHandler = () => {
