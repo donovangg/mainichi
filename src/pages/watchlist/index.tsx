@@ -4,6 +4,7 @@ import Link from "next/link";
 import AnimeContext from "~/context/AnimeContext";
 import { useContext, useEffect } from "react";
 import WatchList from "~/components/WatchList";
+import { UserAuth } from '../../context/AuthContext'
 
 interface animeProps {
   anime: {
@@ -32,19 +33,7 @@ interface animeProps {
 const Home: NextPage<animeProps> = () => {
   const { watching, saveWatchlist, getLocalWatchlist } =
     useContext(AnimeContext);
-
-    useEffect(() => {
-      if (localStorage.getItem("watching") === null) {
-        localStorage.setItem("watching", JSON.stringify([]));
-      } else {
-      let localWatchlist = JSON.parse(localStorage.getItem("watching"));
-      console.log(localWatchlist);
-      }
-    }, [])
-
-  useEffect(() => {
-    saveWatchlist();
-  }, [watching]);
+    const { signedInUser, logOut, signInWithGoogle} = UserAuth();
 
   return (
     <>
@@ -61,7 +50,7 @@ const Home: NextPage<animeProps> = () => {
             </h1>
           </div>
           <div>
-            <WatchList />
+            {signedInUser ? <WatchList /> : "Sign in to add to your WatchList"}
           </div>
         </section>
       </section>

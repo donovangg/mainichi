@@ -14,7 +14,9 @@ import   {db}   from '../firebase/firebase'
 interface AuthUserContext {
     signInWithGoogle: () => void;
     logOut: () => void
-    signedInUser: {}
+    signedInUser: {
+        displayName: string
+    }
 }
 
 const AuthContext = createContext<AuthUserContext>({} as AuthUserContext);
@@ -22,11 +24,6 @@ const AuthContext = createContext<AuthUserContext>({} as AuthUserContext);
 export const AuthContextProvider = ({ children }) => {
   const [signedInUser, setSignedInUser] = useState({});
 
-//   const googleSignIn = () => {
-//     const provider = new GoogleAuthProvider();
-//     // signInWithPopup(auth, provider);
-//     signInWithRedirect(auth, provider)
-//   };
 const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
@@ -72,7 +69,7 @@ const signInWithGoogle = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setSignedInUser(currentUser);
-      console.log('User', currentUser)
+      console.log('Hello User', currentUser)
     });
     return () => {
       unsubscribe();

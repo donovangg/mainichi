@@ -4,11 +4,11 @@ import { FaBookmark } from "react-icons/fa";
 import { UserAuth } from '../context/AuthContext'
 
 const Navbar = () => {
-  const { signedInUser, signOut, signInWithGoogle} = UserAuth();
+  const { signedInUser, logOut, signInWithGoogle} = UserAuth();
 
-  const signOutHandler = async () => {
+  const signOutHandler = () => {
     try {
-      await signOut();
+      logOut();
     } catch (error) {
       console.log(error);
     }
@@ -67,6 +67,8 @@ const Navbar = () => {
              
               <button onClick={signInWithGoogle}>Uwu</button>
             </div>
+
+          {signedInUser?.displayName ? <button onClick={signOutHandler}>Logout</button> : <button onClick={signInWithGoogle}>Sign In pls</button>}
           </div>
         </div>
       </nav>
