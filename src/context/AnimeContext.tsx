@@ -1,4 +1,6 @@
 import { createContext, useState } from "react";
+import { doc, setDoc } from "firebase/firestore"; 
+import   {db}   from '../firebase/firebase'
 
 interface AnimeWatchingContext {
   watching: any[];
@@ -34,14 +36,40 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
       ...prevState,
       { title, image_url, mal_id, url, day, timezone, time },
     ]);
+    setDoc(doc(db, "watchlist", "watching"), {
+      anime: watching
+    });
   };
 
   const deleteWatching = (mal_id) => {
     setWatching((prevState) => prevState.filter((a) => a.mal_id !== mal_id));
   };
 
+  // Local storage
+
+  const saveWatchlist = () => {
+    localStorage.setItem("watching", JSON.stringify(watching));
+  };
+
+  const getLocalWatchlist = () => {
+    if (localStorage.getItem("watching") === null) {
+      localStorage.setItem("watching", JSON.stringify([]));
+    } else {
+    let localWatchlist = JSON.parse(localStorage.getItem("watching"));
+    console.log(localWatchlist);
+    setWatching(localWatchlist);
+    }
+
+  };
+
   return (
-    <AnimeContext.Provider value={{ watching, addWatching, deleteWatching }}>
+    <AnimeContext.Provider
+      value={{
+        watching,
+        addWatching,
+        deleteWatching,
+      }}
+    >
       {children}
     </AnimeContext.Provider>
   );

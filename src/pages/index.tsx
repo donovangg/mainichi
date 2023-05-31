@@ -3,8 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import AnimeList from "~/components/AnimeList";
 import { AnimeProvider } from "~/context/AnimeContext";
-import Navbar from "~/components/Navbar";
-import { format, compareAsc } from "date-fns";
+import { format } from "date-fns";
 
 interface animeProps {
   anime: {

@@ -1,10 +1,25 @@
 import React from "react";
 import Link from "next/link";
 import { FaBookmark } from "react-icons/fa";
-import { useSession, signOut, signIn } from "next-auth/react";
+import { UserAuth } from "../context/AuthContext";
 
-const Navbar = () => {
-  const { data: session } = useSession();
+interface NavbarProps {
+  signedInUser: {
+    displayName: string;
+  };
+}
+
+const Navbar: React.FC<NavbarProps> = () => {
+  const { signedInUser, logOut, signInWithGoogle } = UserAuth();
+
+  const signOutHandler = () => {
+    try {
+      logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <nav className="flex w-full   bg-white shadow ">
@@ -55,10 +70,10 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="flex ">
-              {!session ? (
-                <button onClick={() => signIn()}>Sign In</button>
+              {signedInUser?.displayName ? (
+                <button onClick={signOutHandler}>Logout</button>
               ) : (
-                <button onClick={() => signOut()}>Sign Out</button>
+                <button onClick={signInWithGoogle}>Sign In pls</button>
               )}
             </div>
           </div>
