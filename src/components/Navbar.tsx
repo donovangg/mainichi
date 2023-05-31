@@ -1,16 +1,16 @@
 import React from "react";
 import Link from "next/link";
 import { FaBookmark } from "react-icons/fa";
-import { UserAuth } from '../context/AuthContext'
+import { UserAuth } from "../context/AuthContext";
 
 interface NavbarProps {
   signedInUser: {
     displayName: string;
-}
+  };
 }
 
-const Navbar:  React.FC<NavbarProps> = () => {
-  const { signedInUser, logOut, signInWithGoogle} = UserAuth();
+const Navbar: React.FC<NavbarProps> = () => {
+  const { signedInUser, logOut, signInWithGoogle } = UserAuth();
 
   const signOutHandler = () => {
     try {
@@ -18,7 +18,7 @@ const Navbar:  React.FC<NavbarProps> = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <>
@@ -70,11 +70,12 @@ const Navbar:  React.FC<NavbarProps> = () => {
               </Link>
             </div>
             <div className="flex ">
-             
-              <button onClick={signInWithGoogle}>Uwu</button>
+              {signedInUser?.displayName ? (
+                <button onClick={signOutHandler}>Logout</button>
+              ) : (
+                <button onClick={signInWithGoogle}>Sign In pls</button>
+              )}
             </div>
-
-          {signedInUser?.displayName ? <button onClick={signOutHandler}>Logout</button> : <button onClick={signInWithGoogle}>Sign In pls</button>}
           </div>
         </div>
       </nav>

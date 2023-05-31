@@ -4,12 +4,8 @@ import AnimeContext from "~/context/AnimeContext";
 import WatchingCard from "./WatchingCard";
 
 const WatchList: React.FC = () => {
-  const { watching, getLocalWatchlist } = useContext(AnimeContext);
+  const { watching } = useContext(AnimeContext);
   console.log(watching);
-
-  useEffect(() => {
-    getLocalWatchlist();
-  }, [])
 
   return (
     <section className="mx-auto w-11/12">

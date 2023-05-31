@@ -34,7 +34,7 @@ interface animeProps {
 }
 
 const Home: NextPage<animeProps> = () => {
-  const { watching, saveWatchlist, getLocalWatchlist } =
+  const { watching } =
     useContext(AnimeContext);
     const { signedInUser, logOut, signInWithGoogle} = UserAuth();
 

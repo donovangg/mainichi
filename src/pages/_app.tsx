@@ -7,13 +7,13 @@ import "~/styles/globals.css";
 
 const MyApp: AppType<{}> = ({ Component, pageProps: { ...pageProps } }) => {
   return (
-    <AnimeProvider>
-      <AuthContextProvider>
+    <AuthContextProvider>
+      <AnimeProvider>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </AuthContextProvider>
-    </AnimeProvider>
+      </AnimeProvider>
+    </AuthContextProvider>
   );
 };
 

@@ -13,8 +13,8 @@ import   {db}   from '../firebase/firebase'
 interface AuthUserContext {
     signInWithGoogle: () => void;
     logOut: () => void
-    signedInUser: {
-        displayName: string
+    signedInUser:  {
+        displayName?: string
     }
 }
 

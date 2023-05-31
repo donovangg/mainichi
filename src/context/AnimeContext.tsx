@@ -14,8 +14,6 @@ interface AnimeWatchingContext {
     time: string
   ) => void;
   deleteWatching: (mal_id: any) => void;
-  saveWatchlist: () => void;
-  getLocalWatchlist: () => void;
 }
 
 const AnimeContext = createContext<AnimeWatchingContext>(
@@ -70,8 +68,6 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
         watching,
         addWatching,
         deleteWatching,
-        saveWatchlist,
-        getLocalWatchlist,
       }}
     >
       {children}
