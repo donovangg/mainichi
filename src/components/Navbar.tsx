@@ -73,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               {signedInUser?.displayName ? (
                 <button className="btn btn-primary" onClick={signOutHandler}>Logout</button>
               ) : (
-                <button className=" duration-150 hover:ease-in hover:text-pink-500 hover:text-white " onClick={signInWithGoogle}>Sign in</button>
+                <button className=" duration-150 hover:ease-in hover:text-pink-500 " onClick={signInWithGoogle}>Sign in</button>
               )}
             </div>
           </div>
