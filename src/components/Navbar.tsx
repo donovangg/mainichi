@@ -4,7 +4,7 @@ import { FaBookmark } from "react-icons/fa";
 import { UserAuth } from "../context/AuthContext";
 
 interface NavbarProps {
-  signedInUser: {
+  signedInUser?: {
     displayName: string;
   };
 }
@@ -35,13 +35,13 @@ const Navbar: React.FC<NavbarProps> = () => {
             <div className=" flex h-full items-center gap-2  sm:hidden ">
               <Link
                 href="/"
-                className=" mr-2 block rounded px-4 py-2 hover:bg-blue-700 hover:text-white lg:mt-0 lg:inline-block"
+                className=" mr-2 block rounded px-4 py-2 duration-150 hover:ease-in hover:bg-pink-500 hover:text-white lg:mt-0 lg:inline-block"
               >
                 Schedule
               </Link>
               <Link
                 href="/watchlist"
-                className="mr-2  flex flex-row rounded px-4 py-2 hover:bg-blue-700 hover:text-white lg:mt-0 lg:inline-block"
+                className="mr-2  flex flex-row rounded px-4 py-2 duration-150 hover:ease-in hover:bg-pink-500 hover:text-white lg:mt-0 lg:inline-block"
               >
                 <div className="flex items-center">
                   <span className="mx-1">Watching</span>
@@ -52,16 +52,16 @@ const Navbar: React.FC<NavbarProps> = () => {
           </div>
 
           <div className="menu hidden sm:hidden md:col-start-4  md:flex lg:left-0 lg:col-start-4  lg:flex  lg:items-center  lg:gap-4 ">
-            <div className="text-md md: font-bold text-blue-700 md:flex md:items-center lg:flex-grow ">
+            <div className="text-md md: font-bold text-pink-500 duration-150 hover:ease-in md:flex md:items-center lg:flex-grow ">
               <Link
                 href="/"
-                className=" mr-2 block rounded px-4 py-2 hover:bg-blue-700 hover:text-white lg:mt-0 lg:inline-block"
+                className=" mr-2 block rounded px-4 py-2 hover:bg-pink-500 duration-150 hover:ease-in hover:text-white lg:mt-0 lg:inline-block"
               >
                 Schedule
               </Link>
               <Link
                 href="/watchlist"
-                className="mr-2 flex flex-row rounded px-4 py-2 hover:bg-blue-700 hover:text-white lg:mt-0 lg:inline-block"
+                className="mr-2 flex flex-row rounded px-4 py-2 hover:bg-pink-500 duration-150 hover:ease-in hover:text-white lg:mt-0 lg:inline-block"
               >
                 <div className="flex items-center">
                   <span className="mx-1">Watching</span>
@@ -71,9 +71,9 @@ const Navbar: React.FC<NavbarProps> = () => {
             </div>
             <div className="flex ">
               {signedInUser?.displayName ? (
-                <button onClick={signOutHandler}>Logout</button>
+                <button className="btn btn-primary" onClick={signOutHandler}>Logout</button>
               ) : (
-                <button onClick={signInWithGoogle}>Sign In pls</button>
+                <button className=" duration-150 hover:ease-in hover:text-pink-500 " onClick={signInWithGoogle}>Sign in</button>
               )}
             </div>
           </div>

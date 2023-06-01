@@ -1,10 +1,10 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import AnimeContext from "~/context/AnimeContext";
 import { useContext, useEffect } from "react";
 import WatchList from "~/components/WatchList";
 import { UserAuth } from '../../context/AuthContext'
+
 
 interface animeProps {
   anime: {
@@ -46,14 +46,24 @@ const Home: NextPage<animeProps> = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="flex min-h-screen  w-full flex-col items-center">
+      <header
+    className={`overflow-hidden w-screen relative flex  flex-col py-40 items-center bg-no-repeat bg-cover bg-[url('/assets/hibike.webp')]`} 
+  >
+    <div className="z-40 text-center ">
+      <h1 className="text-white text-7xl">Your Watchlist</h1>
+
+    </div>
+    <div className="h-full w-full absolute top-0 left-0 bg-[url('/assets/texture.png')]"></div>
+    <div className="h-full w-full absolute top-0 left-0 bg-black opacity-40"></div>
+  </header>
         <section className="mx-auto w-11/12 ">
-          <div className="mx-auto  w-11/12  ">
-            <h1 className="my-8 text-5xl" data-testid="watchlist-h1">
-              Your watchlist
-            </h1>
-          </div>
           <div>
-            {signedInUser ? <WatchList /> : "Sign in to add to your WatchList"}
+            {signedInUser ? <WatchList /> : 
+            <div className="mx-auto pt-6 text-center">
+              <h2 className="text-4xl">
+                <button className="py-2 px-4 border-b-2  border-pink-500 hover:bg-pink-500 hover:rounded-md duration-150 hover:ease-in hover:text-white" onClick={signInWithGoogle}>Sign In</button>to save to your watchlist</h2>
+            </div>
+            }
           </div>
         </section>
       </section>

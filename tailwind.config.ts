@@ -5,5 +5,8 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  backgroundImage: {
+    'index-bg': "url('/assets/your-name.jpeg')",
+    'watchlist-bg': "url('/assets/hibike.webp')",
+  }
 } satisfies Config;
