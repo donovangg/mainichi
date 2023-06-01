@@ -71,7 +71,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             </div>
             <div className="flex ">
               {signedInUser?.displayName ? (
-                <button onClick={signOutHandler}>Logout</button>
+                <button className="btn btn-primary" onClick={signOutHandler}>Logout</button>
               ) : (
                 <button onClick={signInWithGoogle}>Sign In pls</button>
               )}
