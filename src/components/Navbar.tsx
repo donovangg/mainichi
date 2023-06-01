@@ -4,7 +4,7 @@ import { FaBookmark } from "react-icons/fa";
 import { UserAuth } from "../context/AuthContext";
 
 interface NavbarProps {
-  signedInUser: {
+  signedInUser?: {
     displayName: string;
   };
 }
