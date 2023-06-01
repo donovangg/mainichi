@@ -55,9 +55,9 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
             }
             disabled={watchButtonDisabled}
             data-testid="bookmark-btn"
-            className={`flex w-full resize-none justify-center border border-blue-700 bg-blue-500 px-4 py-2 text-sm text-white hover:bg-blue-700  ${
+            className={`flex w-full resize-none justify-center border  bg-pink-500 px-4 py-2 text-sm text-white duration-150 hover:ease-in hover:bg-pink-700  ${
               watchButtonDisabled
-                ? "cursor-not-allowed bg-blue-500 px-4 py-2 font-bold text-white opacity-50"
+                ? "cursor-not-allowed bg-pink-500 px-4 py-2 font-bold text-white opacity-50"
                 : ""
             }`}
           >

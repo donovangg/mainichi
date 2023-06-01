@@ -6,7 +6,7 @@ const Header = () => {
     const { signedInUser, logOut, signInWithGoogle } = UserAuth();
   return (
     <header
-    className="overflow-hidden w-screen relative flex  flex-col py-44 items-center bg-no-repeat bg-cover bg-[url('/assets/your-name.jpeg')] " 
+    className="overflow-hidden w-screen relative flex  flex-col py-32 items-center bg-no-repeat bg-cover bg-[url('/assets/your-name.jpeg')] " 
   >
     <div className="z-40 w-5/6  md:w-4/6">
       <h2 data-testid="header-h2" className="text-6xl text-white">Mainichi</h2>

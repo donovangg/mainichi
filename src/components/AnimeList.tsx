@@ -33,7 +33,7 @@ const AnimeList: React.FC<AnimeProps> = ({ anime, week, today }) => {
   const { watching } = useContext(AnimeContext);
 
   return (
-    <section className="flex w-full flex-col gap-8 ">
+    <section className="flex w-full pt-16 flex-col gap-8 ">
       <section className="mx-auto w-10/12 p-4  rounded-md bg-white shadow-lg">
         <h2 className="text-3xl" data-testid="h2-element">Happy {today}! It&apos;s the Spring season! </h2>
         <h3 className="text-2xl">Here&apos;s your simulcasts:</h3>
