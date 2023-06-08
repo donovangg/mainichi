@@ -1,6 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 import { doc, setDoc } from "firebase/firestore"; 
 import   {db}   from '../firebase/firebase'
+import { UserAuth } from './AuthContext'
 
 interface AnimeWatchingContext {
   watching: any[];
@@ -21,6 +22,7 @@ const AnimeContext = createContext<AnimeWatchingContext>(
 );
 
 export function AnimeProvider({ children }: { children: React.ReactNode }) {
+  const { signedInUser } = UserAuth();
   const [watching, setWatching] = useState([]);
 
   const addWatching = (
@@ -37,7 +39,8 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
       { title, image_url, mal_id, url, day, timezone, time },
     ]);
     setDoc(doc(db, "watchlist", "watching"), {
-      anime: watching
+      anime: watching,
+      user: signedInUser.uid
     });
   };
 
