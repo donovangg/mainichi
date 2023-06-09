@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { UserAuth } from "~/context/AuthContext";
+import { signIn } from "next-auth/react";
 
 const Header = ({ imgSrc }) => {
   const { signedInUser, logOut, signInWithGoogle } = UserAuth();
@@ -30,7 +31,7 @@ const Header = ({ imgSrc }) => {
               Signed In!
             </button>
           ) : (
-            <button className="rounded-md bg-pink-500 px-4 py-2 text-white">
+            <button onClick={signInWithGoogle} className="rounded-md bg-pink-500 px-4 py-2 text-white">
               Sign In
             </button>
           )}

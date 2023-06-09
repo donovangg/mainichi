@@ -40,7 +40,7 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
     ]);
     setDoc(doc(db, "watchlist", "watching"), {
       anime: watching,
-      user: signedInUser.uid
+      // user: signedInUser.uid
     });
   };
 

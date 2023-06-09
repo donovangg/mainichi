@@ -36,7 +36,7 @@ const signInWithGoogle = () => {
       const email = result.user.email;
       const profilePic = result.user.photoURL;
       console.log(user)
-      setDoc(doc(db, "users", user.uid), {
+      setDoc(doc(db, "users", user.email), {
         key: user.uid,
         email: user.email,
         name: user.displayName,
