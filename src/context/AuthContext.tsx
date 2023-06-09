@@ -15,6 +15,7 @@ interface AuthUserContext {
     logOut: () => void
     signedInUser:  {
         displayName?: string
+        email?: string
     }
 }
 
@@ -40,7 +41,8 @@ const signInWithGoogle = () => {
         key: user.uid,
         email: user.email,
         name: user.displayName,
-        picture: user.photoURL
+        picture: user.photoURL,
+        savedAnime: []
       });
 
     //   save to localstorage
