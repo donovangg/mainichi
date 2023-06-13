@@ -9,12 +9,12 @@ const WatchList: React.FC = () => {
   console.log(watching);
 
   return (
-    <section className="mx-auto w-11/12 border-2 border-blue-600 pt-12">
+    <section className="mx-auto w-11/12 py-12">
       {watching.length < 1 ? "" : <h2 className="py-14 text-6xl">Watching</h2>}
       <div className="mx-auto">
         <ul className="flex w-full flex-wrap gap-5">
           {watching.length < 1 ? (
-            <div className="flex mx-auto flex-col items-center justify-center border-2 border-red-500 py-12">
+            <div className="flex mx-auto flex-col items-center justify-centerpy-12">
               <h2 className="text-4xl">All alone here. Add something!</h2>
               <Link
                 href="/"
