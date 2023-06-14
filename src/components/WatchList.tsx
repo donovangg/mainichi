@@ -19,6 +19,19 @@ const WatchList: React.FC = () => {
     });
   }, [signedInUser?.email]);
 
+  const animeRef = doc(db, 'users', `${signedInUser?.email}`)
+
+  const deleteAnime = (mal_id) => {
+    try{
+      const result = animeList.filter((ani) => ani.mal_id !== mal_id)
+      updateDoc(animeRef,{
+        savedAnime: result
+      })
+    } catch(error){
+      console.log(error );
+    }
+  }
+
   return (
     <section className="mx-auto w-11/12 py-12">
       {watching.length < 1 ? "" : <h2 className="py-14 text-6xl">Watching</h2>}
@@ -62,6 +75,7 @@ const WatchList: React.FC = () => {
                     timezone={ani.timezone}
                     time={ani.time}
                     mal_id={ani.mal_id}
+                    deleteAnime={deleteAnime}
                   />
                 </div>
               ))}

@@ -11,6 +11,7 @@ type WatchingCardProps = {
   timezone: string;
   time: string;
   mal_id: number;
+  deleteAnime: (mal_id: any) => void
 };
 
 const WatchingCard: React.FC<WatchingCardProps> = ({
@@ -21,6 +22,7 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
   timezone,
   time,
   mal_id,
+  deleteAnime
 }) => {
   const { addWatching, watching, deleteWatching } = useContext(AnimeContext);
   return (
@@ -33,7 +35,7 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
         />
         <button
           onClick={() => {
-            deleteWatching(mal_id);
+            deleteAnime(mal_id);
           }}
         >
           <FaTrash className="absolute right-2 top-2 text-2xl" />
