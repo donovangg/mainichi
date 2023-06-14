@@ -1,12 +1,23 @@
 import React from "react";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import AnimeContext from "~/context/AnimeContext";
+import { UserAuth } from "~/context/AuthContext";
 import WatchingCard from "./WatchingCard";
 import Link from "next/link";
+import { db } from "~/firebase/firebase";
+import { updateDoc, doc, onSnapshot } from "firebase/firestore";
 
 const WatchList: React.FC = () => {
+  const { signedInUser } = UserAuth();
   const { watching } = useContext(AnimeContext);
+  const [animeList, setAnimeList] = useState([]);
   console.log(watching);
+
+  useEffect(() => {
+    onSnapshot(doc(db, "users", `${signedInUser?.email}`), (doc) => {
+      setAnimeList(doc.data()?.savedAnime);
+    });
+  }, [signedInUser?.email]);
 
   return (
     <section className="mx-auto w-11/12 py-12">
@@ -14,28 +25,43 @@ const WatchList: React.FC = () => {
       <div className="mx-auto">
         <ul className="flex w-full flex-wrap gap-5">
           {watching.length < 1 ? (
-            <div className="flex mx-auto flex-col items-center justify-centerpy-12">
+            <div className="justify-centerpy-12 mx-auto flex flex-col items-center">
               <h2 className="text-4xl">All alone here. Add something!</h2>
               <Link
                 href="/"
-                className="my-4 text-3xl text-pink-600 hover:bg-pink-500 px-4 py-2 duration-150 hover:ease-in hover:text-white"
+                className="my-4 px-4 py-2 text-3xl text-pink-600 duration-150 hover:bg-pink-500 hover:text-white hover:ease-in"
               >
-               View Schedule
+                View Schedule
               </Link>
               <img src="/assets/hitori.gif" alt="bocchi sad" />
             </div>
           ) : (
+            // <>
+            //   {watching.map((w) => (
+            //     <div key={w.mal_id}>
+            //       <WatchingCard
+            //         title={w.title}
+            //         image_url={w.image_url}
+            //         url={w.url}
+            //         day={w.day}
+            //         timezone={w.timezone}
+            //         time={w.time}
+            //         mal_id={w.mal_id}
+            //       />
+            //     </div>
+            //   ))}
+            // </>
             <>
-              {watching.map((w) => (
-                <div key={w.mal_id}>
+              {animeList.map((ani) => (
+                <div key={ani.mal_id}>
                   <WatchingCard
-                    title={w.title}
-                    image_url={w.image_url}
-                    url={w.url}
-                    day={w.day}
-                    timezone={w.timezone}
-                    time={w.time}
-                    mal_id={w.mal_id}
+                    title={ani.title}
+                    image_url={ani.image_url}
+                    url={ani.url}
+                    day={ani.day}
+                    timezone={ani.timezone}
+                    time={ani.time}
+                    mal_id={ani.mal_id}
                   />
                 </div>
               ))}
