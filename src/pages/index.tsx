@@ -30,8 +30,13 @@ interface animeProps {
   }[];
 }
 
-const Home: NextPage<animeProps> = ({ anime }) => {
+
+
+const Home: NextPage<animeProps> = ({anime}) => {
+
+
   let today = format(new Date(), "EEEE");
+  console.log(today)
 
   let week = [
     { id: 1, day: "Mondays" },

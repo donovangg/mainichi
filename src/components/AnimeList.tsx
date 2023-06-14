@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import AnimeCard from "./AnimeCard";
-import AnimeContext from "~/context/AnimeContext";
 import AnimeListDay from "./AnimeListDay";
 
 type AnimeProps = {
@@ -16,31 +15,34 @@ type AnimeProps = {
     };
     broadcast: {
       day: string;
-      time: string,
-      timezone: string,
-      string: string
+      time: string;
+      timezone: string;
+      string: string;
     };
   }[];
   week: {
-    id: number,
-    day: string
-  }[]
-  today: string
+    id: number;
+    day: string;
+  }[];
+  today: string;
 };
 
 const AnimeList: React.FC<AnimeProps> = ({ anime, week, today }) => {
-  console.log(anime);
-  const { watching } = useContext(AnimeContext);
+  // This variable exists because I needed to add a 'S' to today so it matched with the
+  //property e.g today = tuesday, dayAnime = tuesdays
+  let dayAnime = `${today}s`;
 
   return (
-    <section className="flex w-full pt-16 flex-col gap-8 ">
-      <section className="mx-auto w-10/12 p-4  rounded-md bg-white shadow-lg">
-        <h2 className="text-3xl" data-testid="h2-element">Happy {today}! It&apos;s the Spring season! </h2>
+    <section className="flex w-full flex-col gap-8 pt-16 ">
+      <section className="mx-auto w-10/12 rounded-md  bg-white p-4 shadow-lg">
+        <h2 className="text-3xl" data-testid="h2-element">
+          Happy {today}! It&apos;s the Spring season!{" "}
+        </h2>
         <h3 className="text-2xl">Here&apos;s your simulcasts:</h3>
         <ul className="my-4 grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4">
           {anime.map((ani) => (
             <>
-              {ani.broadcast.day.includes(today) ? (
+              {ani.broadcast.day == dayAnime ? (
                 <AnimeCard key={ani.mal_id} ani={ani} />
               ) : (
                 ""
@@ -49,7 +51,7 @@ const AnimeList: React.FC<AnimeProps> = ({ anime, week, today }) => {
           ))}
         </ul>
       </section>
-      
+
       {week.map((w) => (
         <AnimeListDay key={w.id} anime={anime} day={w.day} />
       ))}

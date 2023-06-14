@@ -15,6 +15,7 @@ interface AuthUserContext {
     logOut: () => void
     signedInUser:  {
         displayName?: string
+        email?: string
     }
 }
 
@@ -36,11 +37,12 @@ const signInWithGoogle = () => {
       const email = result.user.email;
       const profilePic = result.user.photoURL;
       console.log(user)
-      setDoc(doc(db, "users", user.uid), {
+      setDoc(doc(db, "users", user.email), {
         key: user.uid,
         email: user.email,
         name: user.displayName,
-        picture: user.photoURL
+        picture: user.photoURL,
+        savedAnime: []
       });
 
     //   save to localstorage

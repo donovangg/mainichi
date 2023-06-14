@@ -1,6 +1,8 @@
-import { createContext, useState } from "react";
-import { doc, setDoc } from "firebase/firestore"; 
+import { createContext, useState, useContext } from "react";
+import { doc, setDoc, arrayUnion, updateDoc } from "firebase/firestore"; 
 import   {db}   from '../firebase/firebase'
+import { UserAuth } from './AuthContext'
+import { array } from "zod";
 
 interface AnimeWatchingContext {
   watching: any[];
@@ -21,7 +23,10 @@ const AnimeContext = createContext<AnimeWatchingContext>(
 );
 
 export function AnimeProvider({ children }: { children: React.ReactNode }) {
+  const { signedInUser } = UserAuth();
   const [watching, setWatching] = useState([]);
+
+  const animeID = doc(db, 'users', `${signedInUser?.email}`)
 
   const addWatching = (
     title: string,
@@ -36,9 +41,17 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
       ...prevState,
       { title, image_url, mal_id, url, day, timezone, time },
     ]);
-    setDoc(doc(db, "watchlist", "watching"), {
-      anime: watching
-    });
+    updateDoc(animeID, {
+      savedAnime: arrayUnion({
+        title: title,
+        image_url: image_url,
+        mal_id: mal_id,
+        url: url,
+        day: day,
+        timezone: timezone,
+        time: time
+      })
+    })
   };
 
   const deleteWatching = (mal_id) => {
