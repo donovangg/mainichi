@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import AnimeCard from "./AnimeCard";
-import AnimeContext from "~/context/AnimeContext";
 import AnimeListDay from "./AnimeListDay";
 
 type AnimeProps = {
@@ -29,8 +28,9 @@ type AnimeProps = {
 };
 
 const AnimeList: React.FC<AnimeProps> = ({ anime, week, today }) => {
-  console.log(today);
-  const { watching } = useContext(AnimeContext);
+  // This variable exists because I needed to add a 'S' to today so it matched with the
+  //property e.g today = tuesday, dayAnime = tuesdays
+  let dayAnime = `${today}s`;
 
   return (
     <section className="flex w-full flex-col gap-8 pt-16 ">
@@ -42,7 +42,7 @@ const AnimeList: React.FC<AnimeProps> = ({ anime, week, today }) => {
         <ul className="my-4 grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4">
           {anime.map((ani) => (
             <>
-              {ani.broadcast.day == today ? (
+              {ani.broadcast.day == dayAnime ? (
                 <AnimeCard key={ani.mal_id} ani={ani} />
               ) : (
                 ""

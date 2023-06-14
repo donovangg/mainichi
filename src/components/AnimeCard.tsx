@@ -35,7 +35,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
   const watchButtonDisabled = watchingAnime ? true : false;
 
   return (
-    <li className="w-48 overflow-hidden rounded-lg shadow-xl">
+    <li key={ani.mal_id} className="w-48 overflow-hidden rounded-lg shadow-xl">
       <div className="flex flex-col">
         <div>
           <img
