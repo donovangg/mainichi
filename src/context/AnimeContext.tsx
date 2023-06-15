@@ -41,39 +41,30 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
       ...prevState,
       { title, image_url, mal_id, url, day, timezone, time },
     ]);
-    updateDoc(animeID, {
-      savedAnime: arrayUnion({
-        title: title,
-        image_url: image_url,
-        mal_id: mal_id,
-        url: url,
-        day: day,
-        timezone: timezone,
-        time: time
+    if(signedInUser?.email) {
+      updateDoc(animeID, {
+        savedAnime: arrayUnion({
+          title: title,
+          image_url: image_url,
+          mal_id: mal_id,
+          url: url,
+          day: day,
+          timezone: timezone,
+          time: time
+        })
       })
-    })
+    } else {
+      alert("please sign in")
+    }
   };
 
   const deleteWatching = (mal_id) => {
     setWatching((prevState) => prevState.filter((a) => a.mal_id !== mal_id));
+    updateDoc(animeID, {
+      savedAnime: watching
+    })
   };
 
-  // Local storage
-
-  const saveWatchlist = () => {
-    localStorage.setItem("watching", JSON.stringify(watching));
-  };
-
-  const getLocalWatchlist = () => {
-    if (localStorage.getItem("watching") === null) {
-      localStorage.setItem("watching", JSON.stringify([]));
-    } else {
-    let localWatchlist = JSON.parse(localStorage.getItem("watching"));
-    console.log(localWatchlist);
-    setWatching(localWatchlist);
-    }
-
-  };
 
   return (
     <AnimeContext.Provider

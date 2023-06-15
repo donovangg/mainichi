@@ -35,7 +35,7 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
         />
         <button
           onClick={() => {
-            deleteAnime(mal_id);
+            deleteWatching(mal_id);
           }}
         >
           <FaTrash className="absolute right-2 top-2 text-2xl" />
