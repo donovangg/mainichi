@@ -1,10 +1,11 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, Dispatch, SetStateAction } from "react";
 import { doc, setDoc, arrayUnion, updateDoc } from "firebase/firestore"; 
 import   {db}   from '../firebase/firebase'
 import { UserAuth } from './AuthContext'
 import { array } from "zod";
 
 interface AnimeWatchingContext {
+  setWatching: Dispatch<SetStateAction<any[]>>
   watching: any[];
   addWatching: (
     title: string,
@@ -15,7 +16,6 @@ interface AnimeWatchingContext {
     timezone: string,
     time: string
   ) => void;
-  deleteWatching: (mal_id: any) => void;
 }
 
 const AnimeContext = createContext<AnimeWatchingContext>(
@@ -41,29 +41,33 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
       ...prevState,
       { title, image_url, mal_id, url, day, timezone, time },
     ]);
-    if(signedInUser?.email) {
-      updateDoc(animeID, {
-        savedAnime: arrayUnion({
-          title: title,
-          image_url: image_url,
-          mal_id: mal_id,
-          url: url,
-          day: day,
-          timezone: timezone,
-          time: time
-        })
-      })
-    } else {
-      alert("please sign in")
-    }
-  };
-
-  const deleteWatching = (mal_id) => {
-    setWatching((prevState) => prevState.filter((a) => a.mal_id !== mal_id));
     updateDoc(animeID, {
-      savedAnime: watching
+      savedAnime: arrayUnion({
+        title: title,
+        image_url: image_url,
+        mal_id: mal_id,
+        url: url,
+        day: day,
+        timezone: timezone,
+        time: time
+      })
     })
   };
+
+  // const deleteWatching = (mal_id) => {
+  //   let result = setWatching((prevState) => prevState.filter((a) => a.mal_id !== mal_id));
+  //   updateDoc(animeID, {
+  //     savedAnime: result
+  //   })
+  // };
+
+  // const deleteAnime = async (passedID) {
+  //   try {
+
+  //   } catch(error) {
+  //     console.log(error);
+  //   }
+  // }
 
 
   return (
@@ -71,7 +75,7 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
       value={{
         watching,
         addWatching,
-        deleteWatching,
+        setWatching
       }}
     >
       {children}
