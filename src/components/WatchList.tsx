@@ -9,7 +9,7 @@ import { updateDoc, doc, onSnapshot } from "firebase/firestore";
 
 const WatchList: React.FC = () => {
   const { signedInUser } = UserAuth();
-  const { watching } = useContext(AnimeContext);
+  const { watching, setWatching } = useContext(AnimeContext);
   const [animeList, setAnimeList] = useState([]);
   console.log(watching);
 
@@ -76,6 +76,7 @@ const WatchList: React.FC = () => {
                     time={ani.time}
                     mal_id={ani.mal_id}
                     deleteAnime={deleteAnime}
+                    setWatching={setWatching}
                   />
                 </div>
               ))}
