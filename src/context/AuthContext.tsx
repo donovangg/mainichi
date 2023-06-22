@@ -4,6 +4,9 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendSignInLinkToEmail
 } from 'firebase/auth';
 
 import { auth } from '~/firebase/firebase';
@@ -24,6 +27,14 @@ const AuthContext = createContext<AuthUserContext>({} as AuthUserContext);
 export const AuthContextProvider = ({ children }) => {
   const [signedInUser, setSignedInUser] = useState({});
 
+  function signUp(email, password) {
+    return createUserWithEmailAndPassword(auth, email, password);
+  }
+
+  function login(email, password) {
+    return signInWithEmailAndPassword(auth, email, password);
+  }
+
 const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
@@ -37,6 +48,8 @@ const signInWithGoogle = () => {
       const email = result.user.email;
       const profilePic = result.user.photoURL;
       console.log(user)
+      // This is wiping what was saved for previous users
+      // change this or add a sign in and login button
       setDoc(doc(db, "users", user.email), {
         key: user.uid,
         email: user.email,
@@ -45,12 +58,7 @@ const signInWithGoogle = () => {
         savedAnime: []
       });
 
-    //   save to localstorage
-    localStorage.setItem("name", name);
-    localStorage.setItem("email", email);
-    localStorage.setItem("profilePic", profilePic);
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
+    
     }).catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
@@ -78,7 +86,7 @@ const signInWithGoogle = () => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ signInWithGoogle, logOut, signedInUser }}>
+    <AuthContext.Provider value={{ signInWithGoogle, logOut, signedInUser, signUp }}>
       {children}
     </AuthContext.Provider>
   );
