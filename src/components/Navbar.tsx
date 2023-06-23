@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { FaBookmark } from "react-icons/fa";
 import { UserAuth } from "../context/AuthContext";
+import Dropdown from "./Dropdown";
 
 interface NavbarProps {
   signedInUser?: {
@@ -21,7 +22,6 @@ const Navbar: React.FC<NavbarProps> = () => {
   };
 
   return (
-    <>
       <nav className="flex w-full   bg-white shadow ">
         <div className="relative mx-auto grid w-10/12 grid-cols-2 pb-2 pt-2 ">
           <div className="flex items-center justify-between   pr-2 lg:w-auto lg:border-b-0 ">
@@ -76,10 +76,10 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <button className=" duration-150 hover:ease-in hover:text-pink-500 " onClick={signInWithGoogle}>Sign in</button>
               )}
             </div>
+            <Dropdown />
           </div>
         </div>
       </nav>
-    </>
   );
 };
 

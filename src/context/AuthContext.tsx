@@ -6,7 +6,8 @@ import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  sendSignInLinkToEmail
+  sendSignInLinkToEmail,
+  UserCredential
 } from 'firebase/auth';
 
 import { auth } from '~/firebase/firebase';
@@ -15,7 +16,9 @@ import   {db}   from '../firebase/firebase'
 
 interface AuthUserContext {
     signInWithGoogle: () => void;
-    logOut: () => void
+    logOut: () => void;
+    signUp: (email: any, password: any) => Promise<UserCredential>;
+    logIn: (email: any, password: any) => Promise<UserCredential>;
     signedInUser:  {
         displayName?: string
         email?: string
@@ -31,7 +34,7 @@ export const AuthContextProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
-  function login(email, password) {
+  function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
@@ -86,7 +89,7 @@ const signInWithGoogle = () => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ signInWithGoogle, logOut, signedInUser, signUp }}>
+    <AuthContext.Provider value={{ signInWithGoogle, logOut, signedInUser, signUp, logIn }}>
       {children}
     </AuthContext.Provider>
   );

@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { UserAuth } from "~/context/AuthContext";
 import { useRouter } from "next/router";
+import { FaUser } from 'react-icons/fa'
 
-const SignupForm = () => {
-  const { signedInUser, signUp } = UserAuth();
+const LoginForm = () => {
+  const { signedInUser, logIn } = UserAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState("");
   const router = useRouter();
@@ -12,7 +13,7 @@ const SignupForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      await signUp(email, password)
+      await logIn(email, password)
       router.push("/success")
     } catch(error){
         console.log(error);
@@ -94,4 +95,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default LoginForm;
