@@ -17,7 +17,7 @@ import   {db}   from '../firebase/firebase'
 interface AuthUserContext {
     signInWithGoogle: () => void;
     logOut: () => void;
-    signUp: (email: any, password: any) => Promise<UserCredential>;
+    signUp(email: any, password: any): void
     logIn: (email: any, password: any) => Promise<UserCredential>;
     signedInUser:  {
         displayName?: string
@@ -31,7 +31,11 @@ export const AuthContextProvider = ({ children }) => {
   const [signedInUser, setSignedInUser] = useState({});
 
   function signUp(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+    createUserWithEmailAndPassword(auth, email, password);
+
+      setDoc(doc(db, "users", email), {
+        savedAnime: []
+      });
   }
 
   function logIn(email, password) {
@@ -51,17 +55,6 @@ const signInWithGoogle = () => {
       const email = result.user.email;
       const profilePic = result.user.photoURL;
       console.log(user)
-      // This is wiping what was saved for previous users
-      // change this or add a sign in and login button
-      setDoc(doc(db, "users", user.email), {
-        key: user.uid,
-        email: user.email,
-        name: user.displayName,
-        picture: user.photoURL,
-        savedAnime: []
-      });
-
-    
     }).catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
