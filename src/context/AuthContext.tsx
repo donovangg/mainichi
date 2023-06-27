@@ -4,6 +4,10 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendSignInLinkToEmail,
+  UserCredential
 } from 'firebase/auth';
 
 import { auth } from '~/firebase/firebase';
@@ -12,7 +16,9 @@ import   {db}   from '../firebase/firebase'
 
 interface AuthUserContext {
     signInWithGoogle: () => void;
-    logOut: () => void
+    logOut: () => void;
+    signUp(email: any, password: any): void
+    logIn: (email: any, password: any) => Promise<UserCredential>;
     signedInUser:  {
         displayName?: string
         email?: string
@@ -23,6 +29,18 @@ const AuthContext = createContext<AuthUserContext>({} as AuthUserContext);
 
 export const AuthContextProvider = ({ children }) => {
   const [signedInUser, setSignedInUser] = useState({});
+
+  function signUp(email, password) {
+    createUserWithEmailAndPassword(auth, email, password);
+
+      setDoc(doc(db, "users", email), {
+        savedAnime: []
+      });
+  }
+
+  function logIn(email, password) {
+    return signInWithEmailAndPassword(auth, email, password);
+  }
 
 const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
@@ -37,20 +55,6 @@ const signInWithGoogle = () => {
       const email = result.user.email;
       const profilePic = result.user.photoURL;
       console.log(user)
-      setDoc(doc(db, "users", user.email), {
-        key: user.uid,
-        email: user.email,
-        name: user.displayName,
-        picture: user.photoURL,
-        savedAnime: []
-      });
-
-    //   save to localstorage
-    localStorage.setItem("name", name);
-    localStorage.setItem("email", email);
-    localStorage.setItem("profilePic", profilePic);
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
     }).catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
@@ -78,7 +82,7 @@ const signInWithGoogle = () => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ signInWithGoogle, logOut, signedInUser }}>
+    <AuthContext.Provider value={{ signInWithGoogle, logOut, signedInUser, signUp, logIn }}>
       {children}
     </AuthContext.Provider>
   );

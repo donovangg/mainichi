@@ -5,13 +5,18 @@ import { UserAuth } from "~/context/AuthContext";
 import WatchingCard from "./WatchingCard";
 import Link from "next/link";
 import { db } from "~/firebase/firebase";
-import { updateDoc, doc, onSnapshot } from "firebase/firestore";
+import { updateDoc, doc, onSnapshot, getDoc, collection } from "firebase/firestore";
 
 const WatchList: React.FC = () => {
   const { signedInUser } = UserAuth();
   const { watching, setWatching } = useContext(AnimeContext);
   const [animeList, setAnimeList] = useState([]);
+  const usersCollectionRef = collection(db, "Users")
+  const animeRef = doc(db, 'users', `${signedInUser?.email}`)
+  // const docSnap =  getDoc(animeRef.data().savedAnime)
   console.log(watching);
+  console.log(usersCollectionRef);
+
 
   useEffect(() => {
     onSnapshot(doc(db, "users", `${signedInUser?.email}`), (doc) => {
@@ -19,7 +24,7 @@ const WatchList: React.FC = () => {
     });
   }, [signedInUser?.email]);
 
-  const animeRef = doc(db, 'users', `${signedInUser?.email}`)
+
 
   const deleteAnime = (mal_id) => {
     try{
@@ -49,21 +54,6 @@ const WatchList: React.FC = () => {
               <img src="/assets/hitori.gif" alt="bocchi sad" />
             </div>
           ) : (
-            // <>
-            //   {watching.map((w) => (
-            //     <div key={w.mal_id}>
-            //       <WatchingCard
-            //         title={w.title}
-            //         image_url={w.image_url}
-            //         url={w.url}
-            //         day={w.day}
-            //         timezone={w.timezone}
-            //         time={w.time}
-            //         mal_id={w.mal_id}
-            //       />
-            //     </div>
-            //   ))}
-            // </>
             <>
               {animeList.map((ani) => (
                 <div key={ani.mal_id}>
