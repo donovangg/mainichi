@@ -13,7 +13,7 @@ const SignupForm = () => {
     e.preventDefault();
     try{
       await signUp(email, password)
-      router.push("/success")
+      router.push("/account")
     } catch(error){
         console.log(error);
     }
@@ -60,17 +60,6 @@ const SignupForm = () => {
                 className="focus:ring-primary-600 focus:border-primary-600 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900  sm:text-sm"
                 required
               />
-            </div>
-            <div className="flex items-start">
-              <div className="flex h-5 items-center">
-                <input
-                  id="terms"
-                  aria-describedby="terms"
-                  type="checkbox"
-                  className="focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 h-4 w-4 rounded border border-gray-300 bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800"
-                  required
-                />
-              </div>
             </div>
             <button
               type="submit"

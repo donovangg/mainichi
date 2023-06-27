@@ -56,6 +56,21 @@ function Dropdown() {
                 )}
               </Menu.Item>
             </div>
+            <div className="px-1 py-1">
+              <Menu.Item>
+                {({ active }) => (
+                  <Link href="/account">
+                    <button
+                      className={`${
+                        active ? "bg-pink-500 text-white" : "text-gray-900"
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    >
+                      Account
+                    </button>
+                  </Link>
+                )}
+              </Menu.Item>
+            </div>
           </Menu.Items>
         </Transition>
       </Menu>
