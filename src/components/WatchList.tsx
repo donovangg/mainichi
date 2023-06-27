@@ -74,28 +74,6 @@ const WatchList: React.FC = () => {
           )}
         </ul>
       </div>
-      {animeList.length > 1 ?
-     <> <p>Anime list exists
-                <>
-              {animeList.map((ani) => (
-                <div key={ani.mal_id}>
-                  <WatchingCard
-                    title={ani.title}
-                    image_url={ani.image_url}
-                    url={ani.url}
-                    day={ani.day}
-                    timezone={ani.timezone}
-                    time={ani.time}
-                    mal_id={ani.mal_id}
-                    deleteAnime={deleteAnime}
-                    setWatching={setWatching}
-                  />
-                </div>
-              ))}
-            </>
-      </p></>   :
-     "Uh ohhhh"
-    }
     </section>
   );
 };
