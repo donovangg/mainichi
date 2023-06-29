@@ -1,8 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import AnimeList from "~/components/AnimeList";
-import { AnimeProvider } from "~/context/AnimeContext";
 import { format } from "date-fns";
 import Header from "~/components/Header";
 
@@ -63,7 +61,7 @@ const Home: NextPage<animeProps> = ({anime}) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch("https://api.jikan.moe/v4/seasons/2023/spring");
+  const res = await fetch("https://api.jikan.moe/v4/seasons/2023/summer");
   const data = await res.json();
   const anime = data.data;
 

@@ -4,7 +4,7 @@ import { UserAuth } from "~/context/AuthContext";
 import { signIn } from "next-auth/react";
 
 const Header = ({ imgSrc }) => {
-  const { signedInUser, logOut, signInWithGoogle } = UserAuth();
+  const { signedInUser, logOut, signInWithGoogle, logIn } = UserAuth();
   return (
     <header
       className={`relative flex w-screen flex-col  items-center overflow-hidden bg-[url('/assets/your-name.jpeg')] bg-cover bg-no-repeat py-32`}
@@ -21,7 +21,7 @@ const Header = ({ imgSrc }) => {
         </p>
         <div className="flex gap-4">
           <Link
-            className="rounded-md bg-pink-500 px-4 py-2 text-white"
+            className="rounded-md bg-pink-500 px-4 py-2 text-white duration-150 hover:ease-in hover:bg-pink-700"
             href="/watchlist"
           >
             Watchlist
@@ -31,9 +31,9 @@ const Header = ({ imgSrc }) => {
               Signed In!
             </button>
           ) : (
-            <button onClick={signInWithGoogle} className="rounded-md bg-pink-500 px-4 py-2 text-white">
+            <Link href="/login" className="rounded-md bg-pink-500 px-4 py-2 text-white">
               Sign In
-            </button>
+            </Link>
           )}
         </div>
       </div>

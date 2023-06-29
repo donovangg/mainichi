@@ -8,11 +8,11 @@ const Home = () => {
     logOut();
   };
   return (
-    <section>
+    <section className="flex flex-col gap-4">
       {signedInUser ? (
         <>
-          <h2>Yo {signedInUser.email}.</h2>
-          <p>Welcome to your account page.</p>
+          <h2 className="text-3xl">Yo {signedInUser.email}.</h2>
+          <p className="text-2xl">Welcome to your account page.</p>
           <div className="flex gap-4">
             <Link
               className="rounded-md bg-pink-500 px-4 py-2 text-white"
@@ -37,7 +37,7 @@ const Home = () => {
       ) : (
         <div>
           <p>
-            Sign in <Link href="/login">Here</Link>
+            Sign in to access your account <Link href="/login">Login Here</Link>
           </p>
         </div>
       )}
