@@ -13,7 +13,7 @@ const SignupForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      await signUp(email, password)
+      signUp(email, password)
       router.push("/account")
     } catch(error){
         console.log(error.message);
@@ -24,11 +24,13 @@ const SignupForm = () => {
   return (
     <div className="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
       <div className="w-80 rounded-lg bg-white shadow dark:border  sm:max-w-md md:mt-0 xl:p-0">
+
         <div className="space-y-4 p-6 sm:p-8 md:space-y-6">
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900  md:text-2xl">
             Create an account
           </h1>
           <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6" action="#">
+          {error ? <span className="text-red-700">{error}.</span> : ""}
             <div>
               <label
                 htmlFor="email"
