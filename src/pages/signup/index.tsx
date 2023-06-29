@@ -3,7 +3,7 @@ import SignupForm from "~/components/SignupForm";
 
 const Home = () => {
   return (
-    <section className="flex min-h-screen border-2 border-red-400  w-full flex-col items-center">
+    <section className="flex min-h-screen w-full flex-col items-center">
       <SignupForm />
     </section>
   );
