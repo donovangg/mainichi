@@ -69,13 +69,6 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </div>
               </Link>
             </div>
-            {/* <div className="flex ">
-              {signedInUser?.displayName ? (
-                <button className="btn btn-primary" onClick={signOutHandler}>Logout</button>
-              ) : (
-                <button className=" duration-150 hover:ease-in hover:text-pink-500 " onClick={signInWithGoogle}>Sign in</button>
-              )}
-            </div> */}
             <Dropdown />
           </div>
         </div>

@@ -13,7 +13,6 @@ const WatchList: React.FC = () => {
   const [animeList, setAnimeList] = useState([]);
   const usersCollectionRef = collection(db, "Users")
   const animeRef = doc(db, 'users', `${signedInUser?.email}`)
-  // const docSnap =  getDoc(animeRef.data().savedAnime)
   console.log(watching);
   console.log(usersCollectionRef);
 
@@ -39,10 +38,10 @@ const WatchList: React.FC = () => {
 
   return (
     <section className="mx-auto w-11/12 py-12">
-      {watching.length < 1 ? "" : <h2 className="py-14 text-6xl">Watching</h2>}
+      {animeList.length < 1 ? "" : <h2 className="py-14 text-6xl">Watching</h2>}
       <div className="mx-auto">
         <ul className="flex w-full flex-wrap gap-5">
-          {watching.length < 1 ? (
+          {animeList.length < 1 ? (
             <div className="justify-centerpy-12 mx-auto flex flex-col items-center">
               <h2 className="text-4xl">All alone here. Add something!</h2>
               <Link
