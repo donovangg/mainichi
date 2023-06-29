@@ -4,6 +4,7 @@ import AnimeContext from "~/context/AnimeContext";
 import { useContext, useEffect } from "react";
 import WatchList from "~/components/WatchList";
 import { UserAuth } from '../../context/AuthContext'
+import Link from "next/link";
 
 
 interface animeProps {
@@ -61,7 +62,7 @@ const Home: NextPage<animeProps> = () => {
             {signedInUser ? <WatchList /> : 
             <div className="mx-auto pt-6 text-center">
               <h2 className="text-4xl">
-                <button className="py-2 px-4 border-b-2  border-pink-500 hover:bg-pink-500 hover:rounded-md duration-150 hover:ease-in hover:text-white" onClick={signInWithGoogle}>Sign In</button>to save to your watchlist</h2>
+                <Link href="/login" className="py-2 px-4 border-b-2  border-pink-500 hover:bg-pink-500 hover:rounded-md duration-150 hover:ease-in hover:text-white">Sign In</Link>to save to your watchlist</h2>
             </div>
             }
           </div>

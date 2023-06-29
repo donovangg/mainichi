@@ -7,6 +7,7 @@ const SignupForm = () => {
   const { signedInUser, signUp } = UserAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -15,7 +16,8 @@ const SignupForm = () => {
       await signUp(email, password)
       router.push("/account")
     } catch(error){
-        console.log(error);
+        console.log(error.message);
+        setError(error.message);
     }
   }
 
@@ -67,6 +69,7 @@ const SignupForm = () => {
             >
               Create an account
             </button>
+            {error ? <span className="text-red-700">{error}.</span> : ""}
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
               Already have an account?{" "}
               <Link

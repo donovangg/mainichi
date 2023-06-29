@@ -64,7 +64,7 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
             deleteAnime(mal_id);
           }}
         >
-          <FaTrash className="absolute right-2 top-2 text-2xl" />
+          <FaTrash className="absolute right-2 top-2 text-2xl duration-100 hover:text-pink-500" />
         </button>
         <div className="flex flex-col justify-between p-4 leading-normal">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">

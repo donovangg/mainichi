@@ -54,12 +54,6 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
     })
   };
 
-  // const deleteWatching = (mal_id) => {
-  //   let result = setWatching((prevState) => prevState.filter((a) => a.mal_id !== mal_id));
-  //   updateDoc(animeID, {
-  //     savedAnime: result
-  //   })
-  // };
 
   // const deleteAnime = async (passedID) {
   //   try {
