@@ -5,6 +5,7 @@ import { FaRegBookmark, FaExternalLinkAlt } from "react-icons/fa";
 import { getFirestore } from "firebase/firestore";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { UserAuth } from "~/context/AuthContext";
+import Link from "next/link";
 
 type AnimeCardProps = {
   ani: {
@@ -82,6 +83,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
               <FaExternalLinkAlt className="text-xl" />
             </a>
           </button>
+          <Link href={`/anime/${ani.mal_id}`}>Uwu</Link>
         </div>
         <div className="mt-4 h-16 overflow-hidden p-2">
           <h2 className="break-words" data-testid="title-h2">
