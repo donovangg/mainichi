@@ -52,29 +52,57 @@ const AnimeDetails = ({ ani }) => {
   return (
     <>
       <header
-        className={`absolute top-0 z-10 flex w-screen flex-col  items-center overflow-hidden
+        className={`absolute top-0 z-10 flex w-screen flex-col items-center overflow-hidden
      bg-[image:var(--image-url)] bg-cover bg-no-repeat py-36`}
         style={{ backgroundImage: `url(${imageUrl})` }}
       >
         <div className="absolute left-0 top-0 h-full w-full bg-[url('/assets/texture.png')]"></div>
         <div className="absolute left-0 top-0 h-full w-full bg-black opacity-40"></div>
       </header>
-      <section className="mx-auto mt-40 w-10/12 rounded-md  bg-white p-4 shadow-lg">
-        <div className="flex border-2 border-red-500">
-          <div>
-            <img src={animeImage} />
+      <section className="mx-auto mt-44 w-10/12 rounded-md border-2 border-blue-500 ">
+        <div className="mt-10 border-2 border-red-500 bg-white p-4 shadow-lg lg:grid lg:grid-cols-2">
+          <div className="z-50  flex justify-center border-2 border-green-500">
+            <img src={animeImage} alt={ani.data.title} className="-mt-12" />
           </div>
-          <div>
-            <h1 className="text-red-700">{ani.data.title}</h1>
+          <div className="flex flex-col justify-center gap-4">
+            <h1 className="text-4xl">🇺🇸{ani.data.title}</h1>
+            <h1 className="text-4xl">🇯🇵{jpTitle}</h1>
           </div>
         </div>
-        <h2>Streaming</h2>
-        {streaming.map((stream) => (
-          <div>
-            <p>{stream.name}</p>
-            <a href={stream.url} target="_blank">Watch</a>
+        <section className="md:grid md:grid-cols-2 md:gap-2">
+          <div className="bg-white p-4 shadow-lg">
+            <ul>
+              <li>
+                <p>Airing:</p>
+                <p>{airingStatus}</p>
+              </li>
+              <li>
+                <p>Broadcast</p>
+                <p>{string}</p>
+              </li>
+              <li>
+                <a href={malLink} target="_blank">
+                  MAL
+                </a>
+              </li>
+            </ul>
           </div>
-        ))}
+          <div className="bg-white p-4 shadow-lg">
+            <h3>Synopsis</h3>
+            <p className="text-clip break-normal leading-6">{synopsis}</p>
+          </div>
+        </section>
+        <section className="bg-white p-4 shadow-lg">
+          <h2>Streaming</h2>
+          <p>Platforms for streaming:</p>
+          <>
+          {streaming.map((stream) => (
+            <div>
+              <a href={stream.url} target="_blank">{stream.name}</a>
+            </div>
+          ))}
+          </>
+        </section>
       </section>
     </>
   );
