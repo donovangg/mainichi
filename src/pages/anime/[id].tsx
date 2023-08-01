@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useRouter } from "next/router";
 import type {
   GetStaticPaths,
@@ -7,46 +7,60 @@ import type {
 } from "next";
 import Head from "next/head";
 
-export const getStaticPaths = async () => {
-  const res = await fetch("https://api.jikan.moe/v4/seasons/2023/summer");
-  const data = await res.json();
-  const anime = data.data;
+// export const getStaticPaths = async () => {
+//   const res = await fetch("https://api.jikan.moe/v4/seasons/2023/summer");
+//   const data = await res.json();
+//   const anime = data.data;
 
-  return {
-    paths: anime.map((ani) => {
-      return {
-        params: {
-          id: ani.mal_id.toString(),
-        },
-      };
-    }),
-    fallback: false,
-  };
-};
+//   return {
+//     paths: anime.map((ani) => {
+//       return {
+//         params: {
+//           id: ani.mal_id.toString(),
+//         },
+//       };
+//     }),
+//     fallback: false,
+//   };
+// };
 
-export const getStaticProps = async ({ params }) => {
-  try {
-    const id = params.id;
-    const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/full`);
+// export async function getServerSideProps({params}) {
+//   try {
+//     const id = params.id;
+//     const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/full`);
+//     const data = await res.json();
+//     return {
+//       props: { ani: data },
+//     };
+//   } catch(error) {
+//     console.log("error fetching data", error);
+//     return {
+//       props: {ani: null}
+//     }
+//   }
+// }
+const animeDetails = () => {
+  const router = useRouter()
+  const [ani, setAni] = useState(null)
+
+   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const id = router.query.id;
+        const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/full`);
     const data = await res.json();
-    return {
-      props: { ani: data },
+    setAni(data);
+      } catch(error) {
+        console.log("error fetching data!", error);
+        setAni(null)
+      }
     };
-  } catch(error) {
-    console.log("error fetching data", error);
-    return {
-      props: {ani: null}
-    }
-  }
+    fetchData();
+   }, [router.query.id])
 
-
-}
-
-const animeDetails = ({ ani }) => {
-
-  if(!ani || !ani.data) {
+   if(!ani || !ani.data) {
     return <div>Loading...</div>
-  }
+   }
 
   console.log(ani.data);
 
