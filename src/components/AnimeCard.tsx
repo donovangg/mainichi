@@ -1,10 +1,11 @@
 import React from "react";
 import AnimeContext from "~/context/AnimeContext";
 import { useContext } from "react";
-import { FaRegBookmark, FaExternalLinkAlt } from "react-icons/fa";
+import { FaRegBookmark, FaExternalLinkAlt, FaInfoCircle } from "react-icons/fa";
 import { getFirestore } from "firebase/firestore";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { UserAuth } from "~/context/AuthContext";
+import Link from "next/link";
 
 type AnimeCardProps = {
   ani: {
@@ -73,15 +74,19 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
               )}
             </button>
           ) : (
-            <button className="flex w-full resize-none justify-center border  bg-pink-700 px-4 py-2 text-sm text-white duration-150 hover:bg-pink-400 hover:ease-in" disabled>
-                 <FaRegBookmark className="text-xl" />
+            <button
+              className="flex w-full resize-none justify-center border  bg-pink-700 px-4 py-2 text-sm text-white duration-150 hover:bg-pink-400 hover:ease-in"
+              disabled
+            >
+              <FaRegBookmark className="text-xl" />
             </button>
           )}
-          <button className="flex w-full items-center justify-center p-2">
-            <a href={ani.url} target="_blank">
-              <FaExternalLinkAlt className="text-xl" />
-            </a>
-          </button>
+          <Link
+            href={`/anime/${ani.mal_id}`}
+            className="flex w-full items-center justify-center p-2 duration-150 hover:text-pink-400 hover:ease-in"
+          >
+            <FaInfoCircle className="text-xl" />
+          </Link>
         </div>
         <div className="mt-4 h-16 overflow-hidden p-2">
           <h2 className="break-words" data-testid="title-h2">
