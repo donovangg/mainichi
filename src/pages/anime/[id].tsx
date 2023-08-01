@@ -25,14 +25,22 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const id = params.id;
-  const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/full`);
-  const data = await res.json();
+  try {
+    const id = params.id;
+    const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/full`);
+    const data = await res.json();
+    return {
+      props: { ani: data },
+    };
+  } catch(error) {
+    console.log("error fetching data", error);
+    return {
+      props: {ani: null}
+    }
+  }
 
-  return {
-    props: { ani: data },
-  };
-};
+
+}
 
 const animeDetails = ({ ani }) => {
 
