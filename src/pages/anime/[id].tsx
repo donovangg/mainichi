@@ -6,39 +6,8 @@ import type {
   InferGetStaticPropsType,
 } from "next";
 import Head from "next/head";
+import TitleTab from "~/components/TitleTab";
 
-// export const getStaticPaths = async () => {
-//   const res = await fetch("https://api.jikan.moe/v4/seasons/2023/summer");
-//   const data = await res.json();
-//   const anime = data.data;
-
-//   return {
-//     paths: anime.map((ani) => {
-//       return {
-//         params: {
-//           id: ani.mal_id.toString(),
-//         },
-//       };
-//     }),
-//     fallback: false,
-//   };
-// };
-
-// export async function getServerSideProps({params}) {
-//   try {
-//     const id = params.id;
-//     const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/full`);
-//     const data = await res.json();
-//     return {
-//       props: { ani: data },
-//     };
-//   } catch(error) {
-//     console.log("error fetching data", error);
-//     return {
-//       props: {ani: null}
-//     }
-//   }
-// }
 const animeDetails = () => {
   const router = useRouter()
   const [ani, setAni] = useState(null)
@@ -59,7 +28,12 @@ const animeDetails = () => {
    }, [router.query.id])
 
    if(!ani || !ani.data) {
-    return <div>Loading...</div>
+    return (
+      <div className="grid items-center">
+        <h2 className="mb-4 text-2xl text-center">Getting Anime Data!</h2>
+        <img src="/assets/yuru-camp.gif" />
+      </div>
+    )
    }
 
   console.log(ani.data);
@@ -85,8 +59,9 @@ const animeDetails = () => {
             <img src={ani.data.images.webp.image_url} alt={ani.data.title} className="-mt-12" />
           </div>
           <div className="flex flex-col justify-center gap-4">
-            <h1 className="text-4xl text-zinc-900">🇺🇸{ani.data.title}</h1>
-            <h1 className="text-4xl text-zinc-900">🇯🇵{ani.data.title_japanese}</h1>
+            {/* <h1 className="text-4xl text-zinc-900">{ani.data.title}</h1>
+            <h1 className="text-4xl text-zinc-900">日本語: {ani.data.title_japanese}</h1> */}
+            <TitleTab title={ani.data.title} jpTitle={ani.data.title_japanese}/>
           </div>
         </div>
         <section className="mt-4 md:grid md:grid-cols-2 md:gap-2">

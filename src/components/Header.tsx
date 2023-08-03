@@ -27,11 +27,11 @@ const Header = ({ imgSrc }) => {
             Watchlist
           </Link>
           {signedInUser ? (
-            <button disabled className="rounded-md bg-pink-500 px-4 py-2 text-white disabled:opacity-75">
+            <button disabled className="rounded-md bg-pink-500 px-4 py-2 text-white disabled:opacity-75 duration-150 hover:ease-in hover:bg-pink-700">
               Signed In!
             </button>
           ) : (
-            <Link href="/login" className="rounded-md bg-pink-500 px-4 py-2 text-white">
+            <Link href="/login" className="rounded-md bg-pink-500 px-4 py-2 text-white duration-150 hover:ease-in hover:bg-pink-700">
               Sign In
             </Link>
           )}
