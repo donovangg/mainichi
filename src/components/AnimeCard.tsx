@@ -6,6 +6,8 @@ import { getFirestore } from "firebase/firestore";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { UserAuth } from "~/context/AuthContext";
 import Link from "next/link";
+import { Toast } from "./ui/toast";
+import { useToast } from "./ui/use-toast";
 
 type AnimeCardProps = {
   ani: {
@@ -29,6 +31,7 @@ type AnimeCardProps = {
 const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
   const { addWatching, watching } = useContext(AnimeContext);
   const { signedInUser, logOut, signInWithGoogle } = UserAuth();
+  const { toast } = useToast()
 
   // so user can't keep adding
   let watchingAnime = watching.find((w) => w.mal_id === ani.mal_id);
@@ -59,6 +62,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
                   ani.broadcast.time
                 )
               }
+              
               disabled={watchButtonDisabled}
               data-testid="bookmark-btn"
               className={`flex w-full resize-none justify-center border  bg-pink-500 px-4 py-2 text-sm text-white duration-150 hover:bg-pink-700 hover:ease-in  ${

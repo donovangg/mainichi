@@ -16,7 +16,7 @@ const Home = () => {
           <div className="flex gap-4">
             <Link
               className="rounded-md bg-pink-500 px-4 py-2 text-white"
-              href="/watchlist"
+              href="/"
             >
               Schedule
             </Link>
