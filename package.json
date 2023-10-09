@@ -12,13 +12,19 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",
+    "@radix-ui/react-toast": "^1.1.5",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
     "date-fns": "^2.29.3",
     "firebase": "^9.22.1",
+    "lucide-react": "^0.284.0",
     "next": "^13.2.4",
     "next-auth": "^4.22.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss-animate": "^1.0.7",
     "zod": "^3.21.4"
   },
   "devDependencies": {

@@ -5,6 +5,8 @@ import { UserAuth } from "~/context/AuthContext";
 import { useContext, useState, useEffect } from "react";
 import { db } from "~/firebase/firebase";
 import { updateDoc, doc, onSnapshot } from "firebase/firestore";
+import { Toast } from "./ui/toast";
+import { useToast } from "./ui/use-toast";
 
 type WatchingCardProps = {
   setWatching: Dispatch<SetStateAction<any[]>>
@@ -29,6 +31,7 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
 }) => {
   const { addWatching, watching, setWatching} = useContext(AnimeContext);
   const { signedInUser } = UserAuth();
+  const {toast} = useToast()
 
   const [anime, setAnime] = useState([]);
 
@@ -46,6 +49,10 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
       await updateDoc(animeRef, {
         savedAnime: result,
       });
+      toast({
+        title: "Anime Removed",
+        description: "Anime removed from watchlist",
+      })
     } catch (err) {
       console.log(err);
     }

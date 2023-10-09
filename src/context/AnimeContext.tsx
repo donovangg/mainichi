@@ -3,6 +3,8 @@ import { doc, setDoc, arrayUnion, updateDoc } from "firebase/firestore";
 import   {db}   from '../firebase/firebase'
 import { UserAuth } from './AuthContext'
 import { array } from "zod";
+import { Toast } from "~/components/ui/toast";
+import { useToast } from "~/components/ui/use-toast";
 
 interface AnimeWatchingContext {
   setWatching: Dispatch<SetStateAction<any[]>>
@@ -25,6 +27,7 @@ const AnimeContext = createContext<AnimeWatchingContext>(
 export function AnimeProvider({ children }: { children: React.ReactNode }) {
   const { signedInUser } = UserAuth();
   const [watching, setWatching] = useState([]);
+  const { toast } = useToast()
 
   const animeID = doc(db, 'users', `${signedInUser?.email}`)
 
@@ -51,6 +54,10 @@ export function AnimeProvider({ children }: { children: React.ReactNode }) {
         timezone: timezone,
         time: time
       })
+    })
+    toast({
+      title: "Anime Added",
+      description: "Anime added to your watchlist",
     })
   };
 
