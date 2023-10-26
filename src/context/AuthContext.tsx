@@ -66,7 +66,6 @@ export const AuthContextProvider = ({ children }) => {
         const name = result.user.displayName;
         const email = result.user.email;
         const profilePic = result.user.photoURL;
-        console.log(user);
       })
       .catch((error) => {
         // Handle Errors here.
@@ -87,7 +86,7 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setSignedInUser(currentUser);
-      console.log("Hello User", currentUser);
+      // console.log("Hello User", currentUser);
     });
     return () => {
       unsubscribe();

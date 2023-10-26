@@ -39,15 +39,15 @@ const AnimeList: React.FC<AnimeProps> = ({ anime, week, today }) => {
           Happy {today}! It&apos;s the Summer!{" "}
         </h2>
         <h3 className="text-2xl">Here&apos;s your simulcasts:</h3>
-        <ul className="my-4 sm:grid sm:grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4 flex items-center flex-col justify-center">
+        <ul className="my-4 flex flex-col items-center justify-center gap-4 sm:grid sm:grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
           {anime.map((ani) => (
-            <>
+            <React.Fragment key={ani.mal_id}>
               {ani.broadcast.day == dayAnime ? (
                 <AnimeCard key={ani.mal_id} ani={ani} />
               ) : (
                 ""
               )}
-            </>
+            </React.Fragment>
           ))}
         </ul>
       </section>
