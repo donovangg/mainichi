@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { FaUser } from 'react-icons/fa'
 
 const LoginForm = () => {
-  const { signedInUser, logIn } = UserAuth();
+  const { signedInUser, logIn, signInWithGoogle } = UserAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -21,6 +21,11 @@ const LoginForm = () => {
         setError(error.message);
     }
   }
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle();
+  };
+
 
   return (
     <div className="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
@@ -83,6 +88,7 @@ const LoginForm = () => {
 
               </Link>
             </p>
+            <button onClick={handleGoogleSignIn}>GHoogle Sign</button>
           </form>
         </div>
       </div>
