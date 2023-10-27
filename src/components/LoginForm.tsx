@@ -22,9 +22,17 @@ const LoginForm = () => {
     }
   }
 
-  const handleGoogleSignIn = () => {
-    signInWithGoogle();
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+      // Redirect to a different page after successful login
+      router.push("/account"); 
+    } catch (error) {
+      console.error(error);
+    }
   };
+
 
 
   return (
