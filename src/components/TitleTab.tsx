@@ -11,7 +11,7 @@ function classNames(...classes) {
 
 function TitleTab({ title, jpTitle }: TabProps) {
   return (
-    <div className="w-full h-full max-w-md px-2 py-16 sm:px-0">
+    <div className="w-full h-full border-2 border-blue-600 max-w-md px-2 py-16 sm:px-0">
       <Tab.Group>
         <Tab.List className="flex top-0 space-x-1 rounded-xl bg-pink-700/20 p-1">
           <Tab
@@ -42,7 +42,7 @@ function TitleTab({ title, jpTitle }: TabProps) {
           </Tab>
         </Tab.List>
         <Tab.Panels className="mt-2">
-          <Tab.Panel className="text-xl">{title}</Tab.Panel>
+          <Tab.Panel className="rounded-xl text-xl bg-white p-3 ring-white ring-opacity-60 ring-offset-2 ring-offset-pink-400 focus:outline-none focus:ring-2">{title}</Tab.Panel>
           <Tab.Panel className="rounded-xl text-xl bg-white p-3 ring-white ring-opacity-60 ring-offset-2 ring-offset-pink-400 focus:outline-none focus:ring-2">
             {jpTitle}
           </Tab.Panel>

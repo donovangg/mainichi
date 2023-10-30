@@ -54,11 +54,11 @@ const animeDetails = () => {
         <div className="absolute left-0 top-0 h-full w-full bg-black opacity-40"></div>
       </header>
       <section className="mx-auto mt-64 lg:mt-44 w-10/12 rounded-md">
-        <div className="mt-10 bg-white p-4 shadow-lg lg:grid lg:grid-cols-2">
+        <div className="mt-10 bg-white border-2 border-red-500 p-4 shadow-lg lg:grid lg:grid-cols-2">
           <div className="z-50  flex justify-center">
             <img src={ani.data.images.webp.image_url} alt={ani.data.title} className="-mt-12" />
           </div>
-          <div className="flex flex-col justify-center gap-4">
+          <div className="lg:grid lg:place-items-start border-2 border-orange-600 gap-4 sm:grid sm:place-items-center">
             {/* <h1 className="text-4xl text-zinc-900">{ani.data.title}</h1>
             <h1 className="text-4xl text-zinc-900">日本語: {ani.data.title_japanese}</h1> */}
             <TitleTab title={ani.data.title} jpTitle={ani.data.title_japanese}/>
