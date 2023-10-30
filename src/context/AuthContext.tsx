@@ -11,7 +11,7 @@ import {
 } from "firebase/auth";
 
 import { auth } from "~/firebase/firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
 interface AuthUserContext {
@@ -54,10 +54,35 @@ export const AuthContextProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
+  // const signInWithGoogle = () => {
+  //   const provider = new GoogleAuthProvider();
+  //   signInWithPopup(auth, provider)
+  //     .then((result) => {
+  //       // This gives you a Google Access Token. You can use it to access the Google API.
+  //       const credential = GoogleAuthProvider.credentialFromResult(result);
+  //       const token = credential.accessToken;
+  //       // The signed-in user info.
+  //       const user = result.user;
+  //       const name = result.user.displayName;
+  //       const email = result.user.email;
+  //       const profilePic = result.user.photoURL;
+  //     })
+  //     .catch((error) => {
+  //       // Handle Errors here.
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       // The email of the user's account used.
+  //       const email = error.customData.email;
+  //       // The AuthCredential type that was used.
+  //       const credential = GoogleAuthProvider.credentialFromError(error);
+  //       // ...
+  //     });
+  // };
+
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
@@ -66,13 +91,24 @@ export const AuthContextProvider = ({ children }) => {
         const name = result.user.displayName;
         const email = result.user.email;
         const profilePic = result.user.photoURL;
+  
+        // Check if the user already exists in Firestore
+        const userDocRef = doc(db, "users", email);
+        const userDocSnap = await getDoc(userDocRef);
+  
+        if (!userDocSnap.exists()) {
+          // User doesn't exist, initialize a new array
+          setDoc(userDocRef, {
+            savedAnime: [],
+          });
+        }
       })
       .catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
         // The email of the user's account used.
-        const email = error.customData.email;
+        const email = error.customData?.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
