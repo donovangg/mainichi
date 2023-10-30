@@ -8,6 +8,7 @@ import { UserAuth } from "~/context/AuthContext";
 import Link from "next/link";
 import { Toast } from "./ui/toast";
 import { useToast } from "./ui/use-toast";
+import { Button } from "./ui/button";
 
 type AnimeCardProps = {
   ani: {
@@ -72,7 +73,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
               }`}
             >
               {watchButtonDisabled ? (
-                "added"
+                <p className="text-sm font-bold">added</p>
               ) : (
                 <FaRegBookmark className="text-xl" />
               )}
