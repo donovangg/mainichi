@@ -45,7 +45,7 @@ const LoginForm = () => {
           Welcome Back! 
         </h1>
         <h1 className="text-2xl font-semibold tracking-tight">
-        (おかえりなさい)
+        おかえりなさい
         </h1>
         <p className="text- max-w-xs mx-auto">
           By continuing you are setting up a Mainichi account and agree to our
@@ -57,7 +57,7 @@ const LoginForm = () => {
         <p className="px-8 text-center text-sm text-zinc-700">
           New to Mainichi?{" "}
           <Link
-            href="/sign-up"
+            href="/signup"
             className="hover:text-zinc-800 text-sm underline underline-offset-4"
           >
             Sign Up!
