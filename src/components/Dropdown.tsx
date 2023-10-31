@@ -3,6 +3,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { FaChevronDown, FaUser } from "react-icons/fa";
 import { UserAuth } from "~/context/AuthContext";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 function Dropdown() {
   const { signedInUser, logOut, signInWithGoogle } = UserAuth();
@@ -13,7 +14,7 @@ function Dropdown() {
           <Menu.Button className="inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium text-pink-600 transition duration-75 hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
             <div className="flex items-center gap-2">
               <span className="text-lg">
-                <FaUser />
+              {!signedInUser ? <FaUser /> : "signin ed"} 
               </span>
             </div>
           </Menu.Button>
@@ -89,6 +90,7 @@ function Dropdown() {
                     >
                       Account
                     </button>
+              
                   </Link>
                 )}
               </Menu.Item>

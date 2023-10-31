@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { UserAuth } from "~/context/AuthContext";
-import { signIn } from "next-auth/react";
 
 const Header = ({ imgSrc }) => {
-  const { signedInUser, logOut, signInWithGoogle, logIn } = UserAuth();
+  const { signedInUser } = UserAuth();
+  console.log(signedInUser);
   return (
     <header
       className={`relative flex w-screen flex-col  items-center overflow-hidden bg-[url('/assets/your-name.jpeg')] bg-cover bg-no-repeat py-32`}
