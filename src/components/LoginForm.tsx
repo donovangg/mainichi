@@ -4,6 +4,7 @@ import { UserAuth } from "~/context/AuthContext";
 import { useRouter } from "next/router";
 import { FaUser } from 'react-icons/fa'
 import { Button } from "./ui/button";
+import UserAuthForm from "./UserAuthForm";
 
 const LoginForm = () => {
   const { signedInUser, logIn, signInWithGoogle } = UserAuth();
@@ -37,12 +38,31 @@ const LoginForm = () => {
 
 
   return (
-    <div className="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
-      <div className="rounded-lg bg-white shadow dark:border w-80 md:mt-0 xl:p-0">
-      <div className="grid place-items-center">
-        <h2>Sign in!</h2>
-        <Button onClick={handleGoogleSignIn}>Google</Button>
-      </div>
+    <div className="container mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px]">
+      <div className="flex flex-col space-y-2 text-center">
+        <h1 className="text-2xl font-semibold tracking-tight">
+          {" "}
+          Welcome Back! 
+        </h1>
+        <h1 className="text-2xl font-semibold tracking-tight">
+        (おかえりなさい)
+        </h1>
+        <p className="text- max-w-xs mx-auto">
+          By continuing you are setting up a Mainichi account and agree to our
+          User Agreement and Privacy Policy
+        </p>
+        {/* sign in form */}
+        <UserAuthForm />
+
+        <p className="px-8 text-center text-sm text-zinc-700">
+          New to Mainichi?{" "}
+          <Link
+            href="/sign-up"
+            className="hover:text-zinc-800 text-sm underline underline-offset-4"
+          >
+            Sign Up!
+          </Link>
+        </p>
       </div>
     </div>
   );
