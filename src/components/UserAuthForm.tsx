@@ -13,7 +13,8 @@ const UserAuthForm = () => {
     const router = useRouter();
     const { toast } = useToast();
 
-    const handleGoogleSignIn = async () => {
+    
+   const handleGoogleSignIn = async () => {
         setIsLoading(true);
 
         try {

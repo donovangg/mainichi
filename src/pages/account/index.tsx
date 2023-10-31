@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { UserAuth } from "~/context/AuthContext";
+import { Avatar, AvatarImage } from "~/components/ui/avatar";
 
 const Home = () => {
   const { signedInUser, signUp, logOut } = UserAuth();

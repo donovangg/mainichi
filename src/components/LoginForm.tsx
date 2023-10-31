@@ -25,17 +25,6 @@ const LoginForm = () => {
   }
 
 
-  const handleGoogleSignIn = async () => {
-    try {
-      await signInWithGoogle();
-      // Redirect to a different page after successful login
-      router.push("/account"); 
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-
 
   return (
     <div className="container mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px]">

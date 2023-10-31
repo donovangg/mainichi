@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FaBookmark } from "react-icons/fa";
 import { UserAuth } from "../context/AuthContext";
 import Dropdown from "./Dropdown";
+import UserAccountNav from "./UserAccountNav";
 
 interface NavbarProps {
   signedInUser?: {
@@ -69,7 +70,15 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </div>
               </Link>
             </div>
-            <Dropdown />
+            {/* <Dropdown /> */}
+            
+        {signedInUser ?   (
+          <UserAccountNav />
+        ) : (
+          <Link href="/login">
+            Sign In
+          </Link>
+        )}
           </div>
         </div>
       </nav>
