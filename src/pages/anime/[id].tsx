@@ -8,33 +8,17 @@ import type {
 import Head from "next/head";
 import TitleTab from "~/components/TitleTab";
 
-const animeDetails = () => {
-  const router = useRouter()
-  const [ani, setAni] = useState(null)
+const animeDetails = ({ani}) => {
+  const router = useRouter();
 
-   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const id = router.query.id;
-        const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/full`);
-    const data = await res.json();
-    setAni(data);
-      } catch(error) {
-        console.log("error fetching data!", error);
-        setAni(null)
-      }
-    };
-    fetchData();
-   }, [router.query.id])
-
-   if(!ani || !ani.data) {
+  if (router.isFallback || !ani || !ani.data) {
     return (
       <div className="grid items-center">
         <h2 className="mb-4 text-2xl text-center">Getting Anime Data!</h2>
         <img src="/assets/yuru-camp.gif" />
       </div>
-    )
-   }
+    );
+  }
 
   console.log(ani.data);
 
@@ -59,8 +43,6 @@ const animeDetails = () => {
             <img src={ani.data.images.webp.image_url} alt={ani.data.title} className="-mt-12" />
           </div>
           <div className="lg:grid lg:place-items-start gap-4 sm:grid sm:place-items-center">
-            {/* <h1 className="text-4xl text-zinc-900">{ani.data.title}</h1>
-            <h1 className="text-4xl text-zinc-900">日本語: {ani.data.title_japanese}</h1> */}
             <TitleTab title={ani.data.title} jpTitle={ani.data.title_japanese}/>
           </div>
         </div>
@@ -95,7 +77,7 @@ const animeDetails = () => {
           <h2 className="text-2xl text-zinc-900">Platforms for streaming:</h2>
           <>
             {ani.data.streaming.map((stream) => (
-              <div>
+              <div key={stream.name}>
                 <a
                   href={stream.url}
                   target="_blank"
@@ -110,6 +92,37 @@ const animeDetails = () => {
       </section>
     </>
   );
+};
+
+const getAnimeIds = async () => {
+  const res = await fetch("https://api.jikan.moe/v4/seasons/2023/fall");
+  const data = await res.json();
+  return data.data; 
+};
+
+export const getStaticPaths = async () => {
+  const animeIds = await getAnimeIds(); 
+
+  // Generate paths for each anime ID
+  const paths = animeIds.map((id) => ({ params: { id: id.toString() } }));
+
+  return { paths, fallback: true };
+};
+
+export const getStaticProps = async ({ params }) => {
+  try {
+    const id = params.id;
+    const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/full`);
+    const data = await res.json();
+
+    return {
+      props: { ani: data },
+      revalidate: 60, 
+    };
+  } catch (error) {
+    console.log("error fetching data!", error);
+    return { notFound: true };
+  }
 };
 
 export default animeDetails;
