@@ -11,7 +11,7 @@ import TitleTab from "~/components/TitleTab";
 const animeDetails = ({ani}) => {
   const router = useRouter();
 
-  if (router.isFallback) {
+  if (router.isFallback || !ani || !ani.data) {
     return (
       <div className="grid items-center">
         <h2 className="mb-4 text-2xl text-center">Getting Anime Data!</h2>
