@@ -45,19 +45,19 @@ const UserAccountNav: React.FC = () => {
         <DropdownMenuSeparator />
 
         <DropdownMenuItem asChild>
-          <Link href="/">schedule</Link>
+          <Link href="/">Schedule</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/watchlist">watchlist</Link>
+          <Link href="/watchlist">Watchlist</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/account">account</Link>
+          <Link href="/account">Account</Link>
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />
 
         <button
-              className=" rounded-md px-4 py-2 text-pink-600 duration-150 hover:bg-pink-500 hover:text-white hover:ease-in"
+              className=" rounded-md px-4 py-2 text-pink-600 duration-150 hover:text-pink-300 hover:ease-in"
               onClick={signOut}
             >
               Signout
