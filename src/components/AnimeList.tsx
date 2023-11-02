@@ -21,7 +21,7 @@ type AnimeProps = {
     };
   }[];
   week: {
-    id: number;
+  id: number;
     day: string;
   }[];
   today: string;
@@ -40,7 +40,7 @@ const AnimeList: React.FC<AnimeProps> = ({ anime, week, today }) => {
           <h2 className="text-3xl" data-testid="h2-element">
             Fall 2023 🍁
           </h2>
-          <a href="">View All</a>
+          <a className="hover:text-pink-500 duration-150 hover:ease-in" href="/current-season">View All</a>
         </div>
         <ul className="my-4 flex flex-col items-center justify-center gap-4 sm:grid sm:grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
           {slicedAnime.map((ani) => (
