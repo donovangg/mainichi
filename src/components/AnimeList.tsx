@@ -31,22 +31,23 @@ const AnimeList: React.FC<AnimeProps> = ({ anime, week, today }) => {
   // This variable exists because I needed to add a 'S' to today so it matched with the
   //property e.g today = tuesday, dayAnime = tuesdays
   let dayAnime = `${today}s`;
+  const slicedAnime = anime.slice(0,6);
 
   return (
     <section className="flex w-full flex-col gap-8 pt-16 ">
-      <section className="mx-auto w-10/12 rounded-md  bg-white p-4 shadow-lg">
+      <section className="mx-auto w-5/6 border-2 border-green-600 lg:w-4/6">
+        <div className="border-2 border-pink-600 flex items-center justify-between">
         <h2 className="text-3xl" data-testid="h2-element">
-          Happy {today}! It&apos;s the Fall season!{" "}
+          Fall 2023
         </h2>
-        <h3 className="text-2xl">Here&apos;s your simulcasts:</h3>
+        <a href="">
+          View All
+        </a>
+        </div>
         <ul className="my-4 flex flex-col items-center justify-center gap-4 sm:grid sm:grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
-          {anime.map((ani) => (
+          {slicedAnime.map((ani) => (
             <React.Fragment key={ani.mal_id}>
-              {ani.broadcast.day == dayAnime ? (
-                <AnimeCard key={ani.mal_id} ani={ani} />
-              ) : (
-                ""
-              )}
+             <AnimeCard key={ani.mal_id} ani={ani} />
             </React.Fragment>
           ))}
         </ul>
