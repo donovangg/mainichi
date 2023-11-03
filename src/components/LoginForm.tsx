@@ -17,7 +17,7 @@ const LoginForm = () => {
     e.preventDefault();
     try{
       await logIn(email, password)
-      router.push("/account")
+      router.push("/watchlist")
     } catch(error){
         console.log(error.message);
         setError(error.message);

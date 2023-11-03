@@ -13,8 +13,8 @@ const WatchList: React.FC = () => {
   const [animeList, setAnimeList] = useState([]);
   const usersCollectionRef = collection(db, "Users")
   const animeRef = doc(db, 'users', `${signedInUser?.email}`)
-  console.log(watching);
-  console.log(usersCollectionRef);
+  // console.log(watching);
+  // console.log(usersCollectionRef);
 
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const WatchList: React.FC = () => {
               <h2 className="text-4xl">All alone here. Add something!</h2>
               <Link
                 href="/"
-                className="my-4 px-4 py-2 text-3xl text-pink-600 duration-150 hover:bg-pink-500 hover:text-white hover:ease-in"
+                className="my-4 px-4 py-2 text-3xl text-pink-600 duration-150 hover:text-pink-500 hover:ease-in"
               >
                 View Schedule
               </Link>

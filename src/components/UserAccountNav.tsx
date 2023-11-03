@@ -45,13 +45,13 @@ const UserAccountNav: React.FC = () => {
         <DropdownMenuSeparator />
 
         <DropdownMenuItem asChild>
-          <Link href="/">Schedule</Link>
+          <Link className="cursor-pointer" href="/">Schedule</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/watchlist">Watchlist</Link>
+          <Link className="cursor-pointer" href="/watchlist">Watchlist</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/account">Account</Link>
+          <Link className="cursor-pointer" href="/account">Account</Link>
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />

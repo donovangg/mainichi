@@ -2,12 +2,12 @@ import React from "react";
 import Link from "next/link";
 import { UserAuth } from "~/context/AuthContext";
 
-const Header = ({ imgSrc }) => {
+const Header = ({ }) => {
   const { signedInUser } = UserAuth();
-  console.log(signedInUser);
+
   return (
     <header
-      className={`relative flex w-screen flex-col  items-center overflow-hidden bg-[url('/assets/your-name.jpeg')] bg-cover bg-no-repeat py-32`}
+      className={`relative flex w-screen flex-col  items-center overflow-hidden bg-[url('/assets/your-name.jpeg')] bg-cover bg-no-repeat py-36`}
     >
       <div className="z-40 w-5/6  md:w-4/6">
         <h2 data-testid="header-h2" className="text-6xl text-white">

@@ -36,7 +36,7 @@ const AnimeList: React.FC<AnimeProps> = ({ anime, week, today }) => {
   return (
     <section className="flex w-full flex-col gap-8 pt-16 ">
       <section className="mx-auto w-5/6  border-green-600 lg:w-4/6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center flex-col md:flex-row justify-between">
           <h2 className="text-3xl" data-testid="h2-element">
             Fall 2023 🍁
           </h2>
