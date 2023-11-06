@@ -8,10 +8,10 @@ import type {
 import Head from "next/head";
 import TitleTab from "~/components/TitleTab";
 
-const animeDetails = ({ani}) => {
+const animeDetails = ({ani, characters}) => {
   const router = useRouter();
 
-  if (router.isFallback || !ani || !ani.data) {
+  if (router.isFallback || !ani || !ani.data || !characters || !characters.data) {
     return (
       <div className="grid items-center">
         <h2 className="mb-4 text-2xl text-center">Getting Anime Data!</h2>
@@ -21,6 +21,7 @@ const animeDetails = ({ani}) => {
   }
 
   console.log(ani.data);
+  console.log(characters.data)
 
   return (
     <>
@@ -113,15 +114,26 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }) => {
   try {
     const id = params.id;
-    const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/full`);
-    const data = await res.json();
+
+    const [animeRes, charactersRes] = await Promise.all([
+      fetch(`https://api.jikan.moe/v4/anime/${id}/full`),
+      fetch(`https://api.jikan.moe/v4/anime/${id}/characters`),
+    ]);
+
+    const [animeData, charactersData] = await Promise.all([
+      animeRes.json(),
+      charactersRes.json(),
+    ]);
 
     return {
-      props: { ani: data },
-      revalidate: 60, 
+      props: {
+        ani: animeData,
+        characters: charactersData,
+      },
+      revalidate: 60,
     };
   } catch (error) {
-    console.log("error fetching data!", error);
+    console.log("Error fetching data!", error);
     return { notFound: true };
   }
 };
