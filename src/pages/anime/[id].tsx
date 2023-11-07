@@ -7,9 +7,11 @@ import type {
 } from "next";
 import Head from "next/head";
 import TitleTab from "~/components/TitleTab";
+import CharactersContainer from "~/components/CharactersContainer";
 
 const animeDetails = ({ani, characters}) => {
   const router = useRouter();
+  // const slicedCharacters = characters.data.slice(0, 6);
 
   if (router.isFallback || !ani || !ani.data || !characters || !characters.data) {
     return (
@@ -39,7 +41,7 @@ const animeDetails = ({ani, characters}) => {
         <div className="absolute left-0 top-0 h-full w-full bg-[url('/assets/texture.png')]"></div>
         <div className="absolute left-0 top-0 h-full w-full bg-black opacity-40"></div>
       </header>
-      <section className="mx-auto mt-64 lg:mt-44 w-10/12 rounded-md">
+      <section className="mx-auto mt-64 lg:mt-44 w-10/12 rounded-md overflow-x-hidden">
         <div className="mt-10 bg-white  p-4 shadow-lg lg:grid lg:grid-cols-2">
           <div className="z-50  flex justify-center">
             <img src={ani.data.images.webp.image_url} alt={ani.data.title} className="-mt-12" />
@@ -90,6 +92,16 @@ const animeDetails = ({ani, characters}) => {
               </div>
             ))}
           </>
+        </section>
+      {/* charactrers section */}
+        <section>
+        {/* {characters.data.slice(0, 6).map((character) => (
+          <div>
+            {character.character.name}
+          </div>
+        ))} */}
+        <CharactersContainer characters={characters} />
+
         </section>
       </section>
     </>

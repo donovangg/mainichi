@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               </span>
             </Link>
           </div>
-          <div className=" flex h-full w-full items-center gap-2 border-2 md:hidden ">
+          <div className=" flex h-full w-full items-center gap-2  md:hidden ">
             <Link
               href="/"
               className=" mr-2 block rounded px-4 py-2 duration-150 hover:bg-pink-500 hover:text-white hover:ease-in lg:mt-0 lg:inline-block"
