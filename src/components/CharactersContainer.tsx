@@ -7,7 +7,7 @@ const CharactersContainer = ({ characters }) => {
     <div>
       <h2>Characters Container</h2>
       {characters.data.slice(0, 6).map((character) => (
-        <div>
+        <div className="border-2 border-blue-600 md:w-8/12">
           {/* {character.character.name} */}
           <CharacterCard
             mal_id={character.character.name}
