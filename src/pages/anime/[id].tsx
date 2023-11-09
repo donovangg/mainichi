@@ -47,7 +47,7 @@ const animeDetails = ({ ani, characters }) => {
         <div className="absolute left-0 top-0 h-full w-full bg-[url('/assets/texture.png')]"></div>
         <div className="absolute left-0 top-0 h-full w-full bg-black opacity-40"></div>
       </header>
-      <section className="md:10/12  mx-auto mt-64 w-11/12 overflow-x-hidden rounded-md border-2  border-blue-600 lg:mt-44">
+      <section className="md:10/12 mx-auto  mt-64 w-11/12 overflow-x-hidden rounded-md border-2 border-blue-600  lg:mt-44 lg:w-9/12">
         <div className="mt-10 bg-white  p-4 shadow-lg lg:grid lg:grid-cols-2">
           <div className="z-50  flex justify-center">
             <img
@@ -63,7 +63,7 @@ const animeDetails = ({ ani, characters }) => {
             />
           </div>
         </div>
-        <section className="border-4 border-orange-600 lg:grid lg:grid-cols-4">
+        <section className="mx-auto border-4 border-orange-600 lg:grid lg:w-9/12 lg:grid-cols-4">
           <section className="mt-4 flex flex-col border-2 border-pink-600 ">
             <div className="border-2 border-pink-600 bg-white p-4 shadow-lg">
               <ul>
@@ -148,7 +148,7 @@ const animeDetails = ({ ani, characters }) => {
           </section>
         </section>
         <section>
-          <div className="mx-auto w-full border-2 border-red-600 md:w-10/12">
+          <div className="mx-auto w-full border-2 border-red-600 md:w-9/12">
             <h3 className="text-2xl text-zinc-900">Trailer</h3>
             <iframe
               className="aspect-video w-full"
