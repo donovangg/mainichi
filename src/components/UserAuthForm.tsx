@@ -20,10 +20,6 @@ const UserAuthForm = () => {
       await signInWithGoogle();
       // Redirect to a different page after successful login
       router.push("/watchlist");
-      toast({
-        title: "Signed in!",
-        description: "Successfully signed in",
-      });
     } catch (error) {
       console.error(error);
       toast({

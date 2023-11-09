@@ -47,8 +47,8 @@ const animeDetails = ({ ani, characters }) => {
         <div className="absolute left-0 top-0 h-full w-full bg-[url('/assets/texture.png')]"></div>
         <div className="absolute left-0 top-0 h-full w-full bg-black opacity-40"></div>
       </header>
-      <section className="md:10/12 mx-auto  mt-64 w-11/12 overflow-x-hidden rounded-md border-2 border-blue-600  lg:mt-44 lg:w-9/12">
-        <div className="mt-10 bg-white  p-4 shadow-lg lg:grid lg:grid-cols-2">
+      <section className="mx-auto mt-64 overflow-x-hidden rounded-md pb-44 md:w-9/12  lg:mt-44 lg:w-9/12">
+        <div className="mx-auto mt-10 w-9/12 bg-white  p-4 shadow-lg lg:grid lg:grid-cols-2">
           <div className="z-50  flex justify-center">
             <img
               src={ani.data.images.webp.image_url}
@@ -63,9 +63,9 @@ const animeDetails = ({ ani, characters }) => {
             />
           </div>
         </div>
-        <section className="mx-auto border-4 border-orange-600 lg:grid lg:w-9/12 lg:grid-cols-4">
-          <section className="mt-4 flex flex-col border-2 border-pink-600 ">
-            <div className="border-2 border-pink-600 bg-white p-4 shadow-lg">
+        <section className="mx-auto lg:grid lg:w-9/12 lg:grid-cols-4">
+          <section className="mt-4 flex flex-col">
+            <div className="  bg-white p-4 shadow-lg">
               <ul>
                 <li className="">
                   <p className="text-2xl text-zinc-900">Airing:</p>
@@ -86,19 +86,19 @@ const animeDetails = ({ ani, characters }) => {
                 </li>
               </ul>
             </div>
-            <div className="my-4 bg-white p-4 shadow-lg">
+            <div className="my-2 bg-white p-4 shadow-lg">
               <h3 className="text-2xl text-zinc-900">Synopsis:</h3>
               <p className="text-clip break-normal leading-6">
                 {ani.data.synopsis}
               </p>
             </div>
-            <div className="my-4 bg-white p-4 shadow-lg">
+            <div className="my-2 bg-white p-4 shadow-lg">
               <h3 className="text-2xl text-zinc-900">Rating:</h3>
               <p className="text-clip break-normal leading-6">
                 {ani.data.rating}
               </p>
             </div>
-            <div className="my-4 bg-white p-4 shadow-lg">
+            <div className="my-2 bg-white p-4 shadow-lg">
               <h3 className="text-2xl text-zinc-900">Genres:</h3>
               {ani.data.genres.map((genre) => (
                 <React.Fragment key={genre.mal_id}>
@@ -108,7 +108,7 @@ const animeDetails = ({ ani, characters }) => {
                 </React.Fragment>
               ))}
             </div>
-            <div className="my-4 bg-white p-4 shadow-lg">
+            <div className="my-2 bg-white p-4 shadow-lg">
               <h2 className="text-2xl text-zinc-900">
                 Platforms for streaming:
               </h2>
@@ -126,7 +126,7 @@ const animeDetails = ({ ani, characters }) => {
                 ))}
               </>
             </div>
-            <div className="my-4 bg-white p-4 shadow-lg">
+            <div className="my-2 bg-white p-4 shadow-lg">
               <h2 className="text-2xl text-zinc-900">External Links:</h2>
               <>
                 {ani.data.external.map((link) => (
@@ -143,13 +143,13 @@ const animeDetails = ({ ani, characters }) => {
               </>
             </div>
           </section>
-          <section className="mt-4 border-2 border-fuchsia-400 lg:col-span-4 lg:col-start-2">
+          <section className="mt-4  lg:col-span-4 lg:col-start-2">
             <CharactersContainer characters={characters} />
           </section>
         </section>
         <section>
-          <div className="mx-auto w-full border-2 border-red-600 md:w-9/12">
-            <h3 className="text-2xl text-zinc-900">Trailer</h3>
+          <div className="mx-auto w-full md:w-9/12">
+            <h3 className="my-4 text-4xl text-zinc-900">Trailer</h3>
             <iframe
               className="aspect-video w-full"
               src={`${ani.data.trailer.embed_url}?autoplay=0`}
