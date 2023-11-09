@@ -87,25 +87,61 @@ const animeDetails = ({ ani, characters }) => {
               </ul>
             </div>
             <div className="my-4 bg-white p-4 shadow-lg">
-              <h3 className="text-2xl text-zinc-900">Synopsis</h3>
+              <h3 className="text-2xl text-zinc-900">Synopsis:</h3>
               <p className="text-clip break-normal leading-6">
                 {ani.data.synopsis}
               </p>
             </div>
-            <h2 className="text-2xl text-zinc-900">Platforms for streaming:</h2>
-            <>
-              {ani.data.streaming.map((stream) => (
-                <div key={stream.name}>
-                  <a
-                    href={stream.url}
-                    target="_blank"
-                    className="text-pink-700  duration-75 hover:text-pink-500"
-                  >
-                    {stream.name}
-                  </a>
-                </div>
+            <div className="my-4 bg-white p-4 shadow-lg">
+              <h3 className="text-2xl text-zinc-900">Rating:</h3>
+              <p className="text-clip break-normal leading-6">
+                {ani.data.rating}
+              </p>
+            </div>
+            <div className="my-4 bg-white p-4 shadow-lg">
+              <h3 className="text-2xl text-zinc-900">Genres:</h3>
+              {ani.data.genres.map((genre) => (
+                <React.Fragment key={genre.mal_id}>
+                  <p className="text-clip break-normal leading-6">
+                    {genre.name}
+                  </p>
+                </React.Fragment>
               ))}
-            </>
+            </div>
+            <div className="my-4 bg-white p-4 shadow-lg">
+              <h2 className="text-2xl text-zinc-900">
+                Platforms for streaming:
+              </h2>
+              <>
+                {ani.data.streaming.map((stream) => (
+                  <div key={stream.name}>
+                    <a
+                      href={stream.url}
+                      target="_blank"
+                      className="text-pink-700  duration-75 hover:text-pink-500"
+                    >
+                      {stream.name}
+                    </a>
+                  </div>
+                ))}
+              </>
+            </div>
+            <div className="my-4 bg-white p-4 shadow-lg">
+              <h2 className="text-2xl text-zinc-900">External Links:</h2>
+              <>
+                {ani.data.external.map((link) => (
+                  <div key={link.name}>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      className="text-pink-700  duration-75 hover:text-pink-500"
+                    >
+                      {link.name}
+                    </a>
+                  </div>
+                ))}
+              </>
+            </div>
           </section>
           <section className="mt-4 border-2 border-fuchsia-400 lg:col-span-4 lg:col-start-2">
             <CharactersContainer characters={characters} />
