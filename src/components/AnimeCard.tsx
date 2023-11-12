@@ -9,6 +9,12 @@ import Link from "next/link";
 import { Toast } from "./ui/toast";
 import { useToast } from "./ui/use-toast";
 import { Button } from "./ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 type AnimeCardProps = {
   ani: {
@@ -78,12 +84,21 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
               )}
             </button>
           ) : (
-            <button
-              className="flex w-full cursor-not-allowed resize-none justify-center bg-pink-700 px-4 py-2 text-sm text-white duration-150 "
-              disabled
-            >
-              <FaRegBookmark className="text-xl" />
-            </button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    className="flex w-full cursor-not-allowed resize-none justify-center bg-pink-700 px-4 py-2 text-sm text-white duration-150 "
+                    disabled
+                  >
+                    <FaRegBookmark className="text-xl" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Login to Add</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           )}
           <Link
             href={`/anime/${ani.mal_id}`}
