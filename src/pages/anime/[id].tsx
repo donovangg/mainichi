@@ -63,8 +63,8 @@ const animeDetails = ({ ani, characters }) => {
             />
           </div>
         </div>
-        <section className="mx-auto lg:grid lg:w-9/12 lg:grid-cols-4">
-          <section className="mt-4 flex flex-col">
+        <section className="mx-auto lg:grid xl:w-9/12 xl:grid-cols-4">
+          <section className="mx-auto mt-4 flex w-11/12 flex-col md:w-full">
             <div className="  bg-white p-4 shadow-lg">
               <ul>
                 <li className="">
