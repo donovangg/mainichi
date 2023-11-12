@@ -9,6 +9,12 @@ import Link from "next/link";
 import { Toast } from "./ui/toast";
 import { useToast } from "./ui/use-toast";
 import { Button } from "./ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 type AnimeCardProps = {
   ani: {
@@ -32,7 +38,7 @@ type AnimeCardProps = {
 const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
   const { addWatching, watching } = useContext(AnimeContext);
   const { signedInUser, logOut, signInWithGoogle } = UserAuth();
-  const { toast } = useToast()
+  const { toast } = useToast();
 
   // so user can't keep adding
   let watchingAnime = watching.find((w) => w.mal_id === ani.mal_id);
@@ -63,10 +69,9 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
                   ani.broadcast.time
                 )
               }
-              
               disabled={watchButtonDisabled}
               data-testid="bookmark-btn"
-              className={`flex w-full resize-none justify-center border  bg-pink-500 px-4 py-2 text-sm text-white duration-150 hover:bg-pink-700 hover:ease-in  ${
+              className={`flex w-full resize-none justify-center bg-pink-500 px-4 py-2 text-sm text-white duration-150 hover:bg-pink-700 hover:ease-in  ${
                 watchButtonDisabled
                   ? "cursor-not-allowed bg-pink-500 px-4 py-2 font-bold text-white opacity-50"
                   : ""
@@ -79,12 +84,21 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
               )}
             </button>
           ) : (
-            <button
-              className="flex w-full resize-none justify-center border  bg-pink-700 px-4 py-2 text-sm text-white duration-150 hover:bg-pink-400 hover:ease-in"
-              disabled
-            >
-              <FaRegBookmark className="text-xl" />
-            </button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    className="flex w-full cursor-not-allowed resize-none justify-center bg-pink-700 px-4 py-2 text-sm text-white duration-150 "
+                    disabled
+                  >
+                    <FaRegBookmark className="text-xl" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Login to Add</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           )}
           <Link
             href={`/anime/${ani.mal_id}`}
