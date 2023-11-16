@@ -101,7 +101,8 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
             </TooltipProvider>
           )}
           <Link
-            href={`/anime/${ani.mal_id}`}
+            href="/anime/[id]"
+            as={`/anime/${ani.mal_id}`}
             className="flex w-full items-center justify-center p-2 duration-150 hover:text-pink-400 hover:ease-in"
           >
             <FaInfoCircle className="text-xl" />

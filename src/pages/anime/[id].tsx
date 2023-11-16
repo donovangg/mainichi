@@ -18,7 +18,9 @@ const animeDetails = ({ ani, characters }) => {
     !ani ||
     !ani.data ||
     !characters ||
-    !characters.data
+    !characters.data ||
+    ani === null ||
+    characters === null
   ) {
     return (
       <div className="grid items-center">
@@ -204,8 +206,14 @@ export const getStaticProps = async ({ params }) => {
       revalidate: 60,
     };
   } catch (error) {
-    console.error("Error fetching data for anime ID:", error);
-    return { notFound: true };
+    console.log("Error fetching data!", error);
+    return {
+      props: {
+        ani: null,
+        characters: null,
+      },
+      revalidate: 60,
+    };
   }
 };
 
