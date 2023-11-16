@@ -193,6 +193,9 @@ export const getStaticProps = async ({ params }) => {
       charactersRes.json(),
     ]);
 
+    console.log("Anime Data:", animeData);
+    console.log("Characters Data:", charactersData);
+
     return {
       props: {
         ani: animeData,
@@ -201,7 +204,7 @@ export const getStaticProps = async ({ params }) => {
       revalidate: 60,
     };
   } catch (error) {
-    console.log("Error fetching data!", error);
+    console.error("Error fetching data for anime ID:", error);
     return { notFound: true };
   }
 };
