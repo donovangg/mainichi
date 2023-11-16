@@ -28,10 +28,8 @@ interface animeProps {
   }[];
 }
 
-
-
-const Home: NextPage<animeProps> = ({anime}) => {
-   let today = format(new Date(), "EEEE");
+const Home: NextPage<animeProps> = ({ anime }) => {
+  let today = format(new Date(), "EEEE");
 
   let week = [
     { id: 1, day: "Mondays" },
@@ -43,7 +41,7 @@ const Home: NextPage<animeProps> = ({anime}) => {
     { id: 7, day: "Sundays" },
   ];
 
-  let imgSrc:"assets/your-name.jpeg"
+  let imgSrc: "assets/your-name.jpeg";
   return (
     <>
       <Head>
@@ -57,7 +55,7 @@ const Home: NextPage<animeProps> = ({anime}) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch("https://api.jikan.moe/v4/seasons/2023/fall");
   const data = await res.json();
   const anime = data.data;

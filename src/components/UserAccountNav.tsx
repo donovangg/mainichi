@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React from "react";
 import {
@@ -13,17 +13,16 @@ import { UserAuth } from "~/context/AuthContext";
 import UserAvatar from "./UserAvatar";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 
-
 const UserAccountNav: React.FC = () => {
-    const { signedInUser, logOut } = UserAuth();
-    const signOut = () => {
-      logOut();
-    };
+  const { signedInUser, logOut } = UserAuth();
+  const signOut = () => {
+    logOut();
+  };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-      <UserAvatar
+        <UserAvatar
           className="h-8 w-8"
           user={{
             name: signedInUser.name || null,
@@ -34,7 +33,9 @@ const UserAccountNav: React.FC = () => {
       <DropdownMenuContent className="bg-white" align="end">
         <div className="flex items-center justify-start gap-2 p-2">
           <div className="flex flex-col space-y-1 leading-none">
-            {signedInUser.name && <p className="font-medium">{signedInUser.name}</p>}
+            {signedInUser.name && (
+              <p className="font-medium">{signedInUser.name}</p>
+            )}
             {signedInUser.email && (
               <p className="w-[200px] truncate text-sm text-zinc-700">
                 {signedInUser.email}
@@ -45,23 +46,24 @@ const UserAccountNav: React.FC = () => {
         <DropdownMenuSeparator />
 
         <DropdownMenuItem asChild>
-          <Link className="cursor-pointer" href="/">Schedule</Link>
+          <Link className="cursor-pointer" href="/">
+            Schedule
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link className="cursor-pointer" href="/watchlist">Watchlist</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <Link className="cursor-pointer" href="/account">Account</Link>
+          <Link className="cursor-pointer" href="/watchlist">
+            Watchlist
+          </Link>
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />
 
         <button
-              className=" rounded-md px-4 py-2 text-pink-600 duration-150 hover:text-pink-300 hover:ease-in"
-              onClick={signOut}
-            >
-              Signout
-            </button>
+          className=" rounded-md px-4 py-2 text-pink-600 duration-150 hover:text-pink-300 hover:ease-in"
+          onClick={signOut}
+        >
+          Signout
+        </button>
       </DropdownMenuContent>
     </DropdownMenu>
   );
