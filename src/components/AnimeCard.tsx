@@ -103,6 +103,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ ani }) => {
           <Link
             href="/anime/[id]"
             as={`/anime/${ani.mal_id}`}
+            prefetch={false}
             className="flex w-full items-center justify-center p-2 duration-150 hover:text-pink-400 hover:ease-in"
           >
             <FaInfoCircle className="text-xl" />
