@@ -60,8 +60,11 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
   };
 
   return (
-    <div key={mal_id}>
-      <li className="sm: relative flex w-96 flex-col items-center rounded-lg border border-gray-200 bg-white shadow md:w-96 md:flex-row lg:w-[30rem]">
+    <article
+      key={mal_id}
+      className="w-72 border-2 border-orange-600 md:w-96 lg:w-[30rem] "
+    >
+      <li className="relative flex  flex-col items-center rounded-lg border border-gray-200 bg-white shadow md:flex-row ">
         <img
           className="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
           src={image_url}
@@ -110,7 +113,7 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
           </a>
         </div>
       </li>
-    </div>
+    </article>
   );
 };
 
