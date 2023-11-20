@@ -4,7 +4,7 @@ const CharacterCard = ({ mal_id, name, role, voice_actors, image }) => {
   console.log(voice_actors);
 
   return (
-    <div className="grid w-full grid-cols-2 bg-white text-zinc-900">
+    <div className="grid w-full grid-cols-2 overflow-x-hidden rounded-lg bg-white text-zinc-900">
       <div className="grid grid-cols-2">
         <div>
           <img className="h-auto w-32" src={image} alt={name} />

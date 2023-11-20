@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaInfoCircle } from "react-icons/fa";
 import AnimeContext from "~/context/AnimeContext";
 import { UserAuth } from "~/context/AuthContext";
 import { useContext, useState, useEffect } from "react";
@@ -7,9 +7,10 @@ import { db } from "~/firebase/firebase";
 import { updateDoc, doc, onSnapshot } from "firebase/firestore";
 import { Toast } from "./ui/toast";
 import { useToast } from "./ui/use-toast";
+import Link from "next/link";
 
 type WatchingCardProps = {
-  setWatching: Dispatch<SetStateAction<any[]>>
+  setWatching: Dispatch<SetStateAction<any[]>>;
   title: string;
   image_url: string;
   url: string;
@@ -29,9 +30,9 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
   time,
   mal_id,
 }) => {
-  const { addWatching, watching, setWatching} = useContext(AnimeContext);
+  const { addWatching, watching, setWatching } = useContext(AnimeContext);
   const { signedInUser } = UserAuth();
-  const {toast} = useToast()
+  const { toast } = useToast();
 
   const [anime, setAnime] = useState([]);
 
@@ -52,27 +53,41 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
       toast({
         title: "Anime Removed",
         description: "Anime removed from watchlist",
-      })
+      });
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <div key={mal_id}>
-      <li className="sm: relative flex w-96 flex-col items-center rounded-lg border border-gray-200 bg-white shadow md:w-96 md:flex-row lg:w-[30rem]">
+    <article
+      key={mal_id}
+      className="w-72 border-2 border-orange-600 md:w-96 lg:w-[30rem] "
+    >
+      <li className="relative flex  flex-col items-center rounded-lg border border-gray-200 bg-white shadow md:flex-row ">
         <img
           className="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
           src={image_url}
           alt={title}
         />
-        <button
-          onClick={() => {
-            deleteAnime(mal_id);
-          }}
-        >
-          <FaTrash className="absolute right-2 top-2 text-2xl duration-100 hover:text-pink-500" />
-        </button>
+        <div className="absolute right-2 top-2 flex">
+          <Link
+            href="/anime/[id]"
+            as={`/anime/${mal_id}`}
+            prefetch={false}
+            className="flex w-full items-center justify-center p-2 duration-150 hover:text-pink-400 hover:ease-in"
+          >
+            <FaInfoCircle className="text-2xl" />
+          </Link>
+          <button
+            onClick={() => {
+              deleteAnime(mal_id);
+            }}
+          >
+            <FaTrash className=" text-2xl duration-100 hover:text-pink-500" />
+          </button>
+        </div>
+
         <div className="flex flex-col justify-between p-4 leading-normal">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             {title}
@@ -98,7 +113,7 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
           </a>
         </div>
       </li>
-    </div>
+    </article>
   );
 };
 

@@ -3,9 +3,8 @@ import Head from "next/head";
 import AnimeContext from "~/context/AnimeContext";
 import { useContext, useEffect } from "react";
 import WatchList from "~/components/WatchList";
-import { UserAuth } from '../../context/AuthContext'
+import { UserAuth } from "../../context/AuthContext";
 import Link from "next/link";
-
 
 interface animeProps {
   anime: {
@@ -30,14 +29,13 @@ interface animeProps {
   }[];
   saveWatchlist: () => void;
   signedInUser: {
-    displayName: string
-}
+    displayName: string;
+  };
 }
 
 const Home: NextPage<animeProps> = () => {
-  const { watching } =
-    useContext(AnimeContext);
-    const { signedInUser, logOut, signInWithGoogle} = UserAuth();
+  const { watching } = useContext(AnimeContext);
+  const { signedInUser, logOut, signInWithGoogle } = UserAuth();
 
   return (
     <>
@@ -47,24 +45,32 @@ const Home: NextPage<animeProps> = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="flex min-h-screen  w-full flex-col items-center">
-      <header
-    className={`overflow-hidden w-screen relative flex  flex-col py-40 items-center bg-no-repeat bg-cover bg-[url('/assets/hibike.webp')]`} 
-  >
-    <div className="z-40 text-center ">
-      <h1 className="text-white text-7xl">Your Watchlist</h1>
-
-    </div>
-    <div className="h-full w-full absolute top-0 left-0 bg-[url('/assets/texture.png')]"></div>
-    <div className="h-full w-full absolute top-0 left-0 bg-black opacity-40"></div>
-  </header>
-        <section className="mx-auto w-11/12 ">
+        <header
+          className={`relative flex w-screen flex-col  items-center overflow-hidden bg-[url('/assets/hibike.webp')] bg-cover bg-no-repeat py-40`}
+        >
+          <div className="z-40 text-center ">
+            <h1 className="text-7xl text-white">Your Watchlist</h1>
+          </div>
+          <div className="absolute left-0 top-0 h-full w-full bg-[url('/assets/texture.png')]"></div>
+          <div className="absolute left-0 top-0 h-full w-full bg-black opacity-40"></div>
+        </header>
+        <section className="mx-auto w-11/12 border-2 border-blue-600 xl:w-4/6">
           <div>
-            {signedInUser ? <WatchList /> : 
-            <div className="mx-auto pt-6 text-center">
-              <h2 className="text-4xl">
-                <Link href="/login" className="py-2 px-4 border-pink-500 text-pink-600 hover:text-pink-300 hover:rounded-md duration-150 hover:ease-in">Sign In</Link>to save to your watchlist</h2>
-            </div>
-            }
+            {signedInUser ? (
+              <WatchList />
+            ) : (
+              <div className="mx-auto pt-6 text-center">
+                <h2 className="text-4xl">
+                  <Link
+                    href="/login"
+                    className="border-pink-500 px-4 py-2 text-pink-600 duration-150 hover:rounded-md hover:text-pink-300 hover:ease-in"
+                  >
+                    Sign In
+                  </Link>
+                  to save to your watchlist
+                </h2>
+              </div>
+            )}
           </div>
         </section>
       </section>

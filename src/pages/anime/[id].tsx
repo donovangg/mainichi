@@ -49,8 +49,8 @@ const animeDetails = ({ ani, characters }) => {
         <div className="absolute left-0 top-0 h-full w-full bg-[url('/assets/texture.png')]"></div>
         <div className="absolute left-0 top-0 h-full w-full bg-black opacity-40"></div>
       </header>
-      <section className="mx-auto mt-64 overflow-x-hidden rounded-md pb-44 md:w-9/12  lg:mt-44 lg:w-9/12">
-        <div className="mx-auto mt-10 w-9/12 bg-white  p-4 shadow-lg lg:grid lg:grid-cols-2">
+      <section className="mx-auto mt-64 overflow-x-hidden rounded-lg pb-44 md:w-9/12  lg:mt-44 lg:w-9/12">
+        <div className="mx-auto mt-10 w-11/12 bg-white p-4  shadow-lg lg:grid lg:w-9/12 lg:grid-cols-2">
           <div className="z-50  flex justify-center">
             <img
               src={ani.data.images.webp.image_url}
