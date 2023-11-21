@@ -43,7 +43,7 @@ const WatchList: React.FC = () => {
     <section className="mx-auto py-12">
       {animeList.length < 1 ? "" : <h2 className="py-14 text-6xl">Watching</h2>}
       <div className="mx-auto">
-        <ul className="mx-auto flex w-full flex-col flex-wrap items-center gap-5 border-2 border-green-600 lg:flex-row lg:items-start">
+        <ul className="mx-auto flex w-full flex-col flex-wrap items-center gap-5  lg:flex-row lg:items-start">
           {animeList.length < 1 ? (
             <div className="mx-auto flex flex-col items-center justify-center py-12">
               <h2 className="text-4xl">All alone here. Add something!</h2>
