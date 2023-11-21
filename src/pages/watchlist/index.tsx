@@ -54,7 +54,7 @@ const Home: NextPage<animeProps> = () => {
           <div className="absolute left-0 top-0 h-full w-full bg-[url('/assets/texture.png')]"></div>
           <div className="absolute left-0 top-0 h-full w-full bg-black opacity-40"></div>
         </header>
-        <section className="mx-auto w-11/12 border-2 border-blue-600 xl:w-4/6">
+        <section className="mx-auto w-11/12 xl:w-4/6">
           <div>
             {signedInUser ? (
               <WatchList />

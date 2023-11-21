@@ -62,7 +62,7 @@ const WatchingCard: React.FC<WatchingCardProps> = ({
   return (
     <article
       key={mal_id}
-      className="w-72 border-2 border-orange-600 md:w-96 lg:w-[30rem] "
+      className="w-72  md:w-96 lg:w-[30rem] "
     >
       <li className="relative flex  flex-col items-center rounded-lg border border-gray-200 bg-white shadow md:flex-row ">
         <img
