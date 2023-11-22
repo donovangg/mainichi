@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { UserAuth } from "~/context/AuthContext";
 
-const Header = ({ }) => {
+const Header = ({}) => {
   const { signedInUser } = UserAuth();
 
   return (
@@ -17,21 +17,27 @@ const Header = ({ }) => {
           data-testid="header-subheader"
           className="my-6 text-2xl text-white md:w-4/6 lg:w-3/6"
         >
-          Find out what anime is airing in Japan to plan out your viewing.
+          Your Daily and Seasonal Guide to the Latest Anime
         </p>
         <div className="flex gap-4">
           <Link
-            className="rounded-md bg-pink-500 px-4 py-2 text-white duration-150 hover:ease-in hover:bg-pink-700"
+            className="rounded-md bg-pink-500 px-4 py-2 text-white duration-150 hover:bg-pink-700 hover:ease-in"
             href="/watchlist"
           >
             Watchlist
           </Link>
           {signedInUser ? (
-            <button disabled className="rounded-md bg-pink-500 px-4 py-2 text-white disabled:opacity-75 duration-150 hover:ease-in hover:bg-pink-700">
+            <button
+              disabled
+              className="rounded-md bg-pink-500 px-4 py-2 text-white duration-150 hover:bg-pink-700 hover:ease-in disabled:opacity-75"
+            >
               Signed In!
             </button>
           ) : (
-            <Link href="/login" className="rounded-md bg-pink-500 px-4 py-2 text-white duration-150 hover:ease-in hover:bg-pink-700">
+            <Link
+              href="/login"
+              className="rounded-md bg-pink-500 px-4 py-2 text-white duration-150 hover:bg-pink-700 hover:ease-in"
+            >
               Sign In
             </Link>
           )}

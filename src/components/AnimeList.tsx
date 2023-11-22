@@ -21,7 +21,7 @@ type AnimeProps = {
     };
   }[];
   week: {
-  id: number;
+    id: number;
     day: string;
   }[];
   today: string;
@@ -36,11 +36,16 @@ const AnimeList: React.FC<AnimeProps> = ({ anime, week, today }) => {
   return (
     <section className="flex w-full flex-col gap-8 pt-16 ">
       <section className="mx-auto w-5/6  border-green-600 lg:w-4/6">
-        <div className="flex items-center flex-col md:flex-row justify-between">
+        <div className="flex flex-col items-center justify-between md:flex-row">
           <h2 className="text-3xl" data-testid="h2-element">
             Fall 2023 🍁
           </h2>
-          <a className="hover:text-pink-500 duration-150 hover:ease-in" href="/current-season">View All</a>
+          <a
+            className="duration-150 hover:text-pink-500 hover:ease-in"
+            href="/current-season"
+          >
+            View All
+          </a>
         </div>
         <ul className="my-4 flex flex-col items-center justify-center gap-4 sm:grid sm:grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
           {slicedAnime.map((ani) => (
@@ -52,9 +57,11 @@ const AnimeList: React.FC<AnimeProps> = ({ anime, week, today }) => {
       </section>
       <section>
         <div className="mx-auto w-5/6  lg:w-4/6">
-        <h2 className="text-3xl py-6">Weekly Schedule</h2>
+          <h2 className="py-6 text-center text-3xl md:text-left">
+            Weekly Schedule
+          </h2>
         </div>
-      
+
         {week.map((w) => (
           <AnimeListDay key={w.id} anime={anime} day={w.day} />
         ))}
