@@ -56,7 +56,7 @@ const Home: NextPage<animeProps> = ({ anime }) => {
 };
 
 export async function getStaticProps() {
-  const res = await fetch("https://api.jikan.moe/v4/seasons/2023/fall");
+  const res = await fetch("https://api.jikan.moe/v4/seasons/2024/winter");
   const data = await res.json();
   const anime = data.data;
 

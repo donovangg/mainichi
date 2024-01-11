@@ -7,7 +7,7 @@ const Home = ({ anime }) => {
       <section className="mx-auto w-5/6  border-green-600 lg:w-4/6">
         <div className="flex items-center justify-between">
           <h2 className="text-3xl" data-testid="h2-element">
-            Fall 2023 🍁
+            Winter 2024 ⛄
           </h2>
         </div>
         <ul className="my-4 flex flex-col items-center justify-center gap-4 sm:grid sm:grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
@@ -23,7 +23,7 @@ const Home = ({ anime }) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch("https://api.jikan.moe/v4/seasons/2023/fall");
+  const res = await fetch("https://api.jikan.moe/v4/seasons/2024/winter");
   const data = await res.json();
   const anime = data.data;
 

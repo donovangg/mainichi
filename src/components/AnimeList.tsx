@@ -38,7 +38,7 @@ const AnimeList: React.FC<AnimeProps> = ({ anime, week, today }) => {
       <section className="mx-auto w-5/6  border-green-600 lg:w-4/6">
         <div className="flex flex-col items-center justify-between md:flex-row">
           <h2 className="text-3xl" data-testid="h2-element">
-            Fall 2023 🍁
+            Winter 2024 ⛄
           </h2>
           <a
             className="duration-150 hover:text-pink-500 hover:ease-in"

@@ -22,7 +22,7 @@ const CharacterCard = ({ mal_id, name, role, voice_actors, image }) => {
               <h3 className="text-lg">{voice_actors[0].person.name}</h3>
               <p>{voice_actors[0].language}</p>
             </div>
-            <div className="flex-2 justify-en flex">
+            <div className="flex-2 flex justify-end">
               <img
                 className="right-0 h-auto w-32"
                 src={voice_actors[0].person.images.jpg.image_url}
